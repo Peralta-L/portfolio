@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{{ url_for('static', filename='mainStyle.css') }}">
+  <script src="{{ url_for('static', filename='mainscript.js') }}" defer></script>
+  <title>CV</title>
+</head>
+<body>
+    {% include "base.html" %}
+    {% block content %}
+    <div class="main">
+        <div class="content"></div>
+        <div class="container-cv">
+            <img src="{{ url_for('static', filename='images/vc_portf.jpg') }}" alt="CV Image" class="cv-image"> 
+            <img src="{{ url_for('static', filename='images/vc_portf.jpg') }}" alt="CV Background Image" class="cv-background-image">
+        </div>
+    </div>
+    {% endblock %}
+</body>
+</html>

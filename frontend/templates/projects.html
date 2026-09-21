@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{{ url_for('static', filename='mainStyle.css') }}">
+  <script src="{{ url_for('static', filename='mainscript.js') }}" defer></script>
+  <title>projects</title>
+</head>
+<body class="projects-body">
+  {% include "base.html" %}
+  {% block content %}
+  <div class="projects-slider">
+        <button class="arrow left" onclick="prevProject()">&#10094;</button>
+        <button class="arrow right" onclick="nextProject()">&#10095;</button>
+    <div class="projects-container">
+      <div class="projects_left">
+        <div class="top-projects-header">
+          <h1 id="number"></h1>
+          <h2>PROJECT</h2>
+          <h3 id="project_title"></h3>
+        </div>
+        <div id="description" class="text-projects"></div>
+      </div>
+      <div class="projects_right">
+        <div class="right-container">
+          <div class="carousel">
+          <img id="img1" class="active" src="" alt="insert image 1">
+          <img id="img3" class="behind" src="" alt="insert image 3">
+          <img id="img2" class="behind" src="" alt="insert image 2">
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endblock %}
+</body>
+</html>

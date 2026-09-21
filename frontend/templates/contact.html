@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{{ url_for('static', filename='mainStyle.css') }}">
+  <script src="{{ url_for('static', filename='mainscript.js') }}" defer></script>
+  <title>Contact</title>
+</head>
+
+<body>
+  {% include "base.html" %}
+  {% block content %}
+  <div class="main_contact">
+    <div class="contact-container">
+      <div class="contact_left_side">
+        <h1>Contact Form...</h1>
+        <form class="contact-form" action="/submit_contact" method="post">
+          <input type="text" id="name" name="name" placeholder="Name..." required>
+          <input type="email" id="email" name="email" placeholder="Email..." required>
+          <textarea id="message" name="message" rows="4" placeholder="Your message..." required></textarea><br>
+          <input type="submit" value="Submit">
+        </form>
+      </div>
+      <div class="contact_right_side">
+        <h1>Get in Touch!</h1>
+        <p class="getintouch_upper">I’m eager to grow professionally and contribute to innovative projects. 
+                                    Whether you’re a recruiter, a potential collaborator, or someone with advice, 
+                                    I’d love to hear from you and explore opportunities together.</p>
+        <p class="getintouch_bottom">Thank you for visiting my portfolio!<br> I look forward to connect with you.</p>
+        <div class="contact-icons">
+          <a href="mailto:Email not setup yet">
+            <img src="../static/icons/gmail_black.png" alt="Email" id="email-icon">
+          </a>
+          <a href="https://www.linkedin.com" target="_blank">
+              <img src="../static/icons/linkedin_black.png" alt="LinkedIn" id="linkedin-icon">
+          </a>
+          <a href="tel:+1234567890">
+              <img src="../static/icons/phone_black.png" alt="Phone" id="phone-icon">
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endblock %}
+</body>
+</html>

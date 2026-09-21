@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{{ url_for('static', filename='mainStyle.css') }}">
+  <script src="{{ url_for('static', filename='mainscript.js') }}" defer></script>
+  <title>Home</title>
+</head>
+<body>
+    {% extends "base.html" %}
+    {% block content %}
+    <div class="intro-container">
+        <div class="text-content">
+            <h2>Hi, I’m Luis</h2>
+            <h1>Full-stack developer</h1>
+            <h2>
+                with a passion for coding and bringing ideas to life, <br>
+                whether it’s front end or backend, 
+                I thrive on turning<br> challenges into opportunities to grow.
+                <br><br>Feel free to explore my portfolio and get in touch!</h2>
+            <div class="main-buttons">
+                <button onclick="location.href='{{ url_for('contact') }}'">Hire Me</button>
+                <button onclick="location.href='{{ url_for('cv') }}'">CV</button>
+            </div>
+        </div>
+        <div class="image-container">
+            <img src="{{ url_for('static', filename='images/cv-clear.png') }}">
+        </div>
+    </div>
+    {% endblock %}
+</body>
+</html>

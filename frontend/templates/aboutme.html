@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{{ url_for('static', filename='Style.css') }}">
+  <script src="{{ url_for('static', filename='script.js') }}" defer></script>
+  <title>aboutme</title>
+</head>
+
+<body>
+  {% include "base.html" %}
+  {% block content %}
+  <div class="water-background" id="water_movement">
+    <div class="water"></div>
+  </div>
+  <div class="sand-background" id="sand"></div>
+  <canvas id="water_canvas"></canvas>
+  <main>
+    <div class="main-content">
+    </div>
+  </main>
+  <div class="aboutme-text">
+    <h1>About Me</h1>
+<p>
+  I am a Computer Science student currently pursuing a Bachelor’s degree at the University of Maryland Global Campus,
+  with a strong focus on growing as both a front-end and back-end developer. 
+  I have a solid foundation in programming and web technologies, including Java, C, Python, SQL, HTML, CSS, and JavaScript,
+  and I enjoy applying these skills to build practical and efficient software solutions.
+<br><br>
+Through my academic studies and hands-on learning, such as Harvard’s CS50 program,
+I have developed strong problem-solving abilities, analytical thinking, and a structured approach to software development. 
+I am particularly interested in creating responsive user interfaces on the front end while also working with server-side 
+logic, databases, and system architecture on the back end.
+<br><br>
+In addition to my technical background, my professional experience as a service member in the U.S. Armed Forces 
+has strengthened my discipline, teamwork, adaptability, and ability to perform under pressure.
+ I have worked in high-responsibility environments, collaborated with international teams, 
+ and managed sensitive information with precision and accountability.
+<br><br>
+I am highly motivated to continue learning new technologies, improving my development skills, 
+and growing into a well-rounded full-stack developer capable of building secure, scalable,
+ and user-focused applications.
+</p>
+
+  </div>
+  <svg>
+    <filter id="turbulence" x="0" y="0" width="100%" height="100%">
+      <feTurbulence id="sea-filter" numOctaves="3" seed="2" baseFrequency="0.02 0.05" />
+      <feDisplacementMap scale="20" in="SourceGraphic" />
+      <animate
+        xlink:href="#sea-filter"
+        attributeName="baseFrequency"
+        dur="60s"
+        keyTimes="0;0.5;1"
+        values="0.02 0.06;0.04 0.08;0.02 0.06"
+        repeatCount="indefinite"
+      />
+    </filter>
+  </svg>
+  {% endblock %}
+</body>

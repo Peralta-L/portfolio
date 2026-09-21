@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{{ url_for('static', filename='mainStyle.css') }}">
+  <script src="{{ url_for('static', filename='mainscript.js') }}" defer></script>
+  <title>Skills</title>
+</head>
+<body>
+    {% extends "base.html" %}
+    {% block content %}
+    <div class="main">
+        <div class="skills-container">
+            <div class="skills-list">
+                <h2>Programming Languages</h2>
+                <ul>
+                    <li data-percent="80">Python</li>
+                    <li data-percent="25">JavaScript</li>
+                    <li data-percent="75">HTML</li>
+                    <li data-percent="50">CSS</li>
+                    <li data-percent="90">Java</li>
+                    <li data-percent="60">C</li>
+                    <li data-percent="80">SQL</li>
+                </ul>
+
+                <h2>Frameworks & Libraries</h2>
+                <ul>
+                    <li data-percent="55">React</li>
+                    <li data-percent="70">Django</li>
+                    <li data-percent="90">Flask</li>
+                    <li data-percent="50">Node.js</li>
+                </ul>
+
+                <h2>Further skills</h2>
+                <ul>
+                    <li>Native Spanish skills</li>
+                    <li>Advanced English skills</li>
+                    <li>B1 German skills</li>
+                    <li>Object-Oriented Programming (OOP)</li>
+                    <li>Data Structures</li>
+                    <li>Algorithms</li>
+                    <li>Basic API usage</li>
+                    <li>Software design basics</li>
+                    <li>Microsoft Office</li>
+                    <li>ComputerScience foundation</li>
+
+                </ul>
+
+                <h2>Certifications</h2>
+                <ul>
+                    <li>Will incert future certs here</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    {% endblock %}
+</body>
+</html>
