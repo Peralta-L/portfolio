@@ -1,16 +1,21 @@
 <header>
     <div class="main-header">
         <div class="left-header">
-            <button onclick="location.href='{{ url_for('index') }}'">L.P.A</button>
+            <a class="nav-btn brand" href="{{ url_for('index') }}" aria-label="Home">L.P.A</a>
         </div>
-        
-        <div class="right-header" >
+
+        <nav class="right-header" aria-label="Main navigation">
             <div class="row">
-                <button onclick="location.href='{{ url_for('aboutme') }}'">About Me</button>
-                <button onclick="location.href='{{ url_for('skills') }}'">Skills/Certs</button>
-                <button onclick="location.href='{{ url_for('projects') }}'">Projects</button>
-                <button onclick="location.href='{{ url_for('contact') }}'">Contact</button>
+                {% set links = [('aboutme', 'About Me'),
+                                ('skills', 'Skills/Certs'),
+                                ('projects', 'Projects'),
+                                ('contact', 'Contact')] %}
+                {% for endpoint, label in links %}
+                <a class="nav-btn{% if request.endpoint == endpoint %} active{% endif %}"
+                   href="{{ url_for(endpoint) }}"
+                   {% if request.endpoint == endpoint %}aria-current="page"{% endif %}>{{ label }}</a>
+                {% endfor %}
             </div>
-        </div>
+        </nav>
     </div>
 </header>

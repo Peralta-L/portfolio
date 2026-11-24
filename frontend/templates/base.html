@@ -2,14 +2,24 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>{{ title }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }} | {{ site.name }} – {{ site.role }}</title>
+    <meta name="description" content="{{ description|default('Portfolio of ' ~ site.name ~ ', ' ~ site.role) }}">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="{{ title }} | {{ site.name }} – {{ site.role }}">
+    <meta property="og:description" content="{{ description|default('Portfolio of ' ~ site.name ~ ', ' ~ site.role) }}">
+    <meta name="theme-color" content="#3d72e6">
     <link rel="stylesheet" href="{{ url_for('static', filename='mainStyle.css') }}">
+    {% block head %}{% endblock %}
+    <script src="{{ url_for('static', filename='mainscript.js') }}" defer></script>
+    {% block scripts %}{% endblock %}
 </head>
 <body class="{{ body_class|default('') }}">
+    <a class="skip-link" href="#main">Skip to content</a>
 
     {% include "header.html" %}
 
-    <main>
+    <main id="main">
         {% block content %}{% endblock %}
     </main>
 
