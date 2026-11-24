@@ -10,11 +10,13 @@ from pathlib import Path
 from flask import Flask, redirect, render_template, request, url_for
 
 BASE_DIR = Path(__file__).resolve().parent
+TEMPLATE_DIR = BASE_DIR.parent / "frontend" / "templates"
+STATIC_DIR = BASE_DIR.parent / "frontend" / "static"
 
 app = Flask(
     __name__,
-    template_folder="../frontend/templates",
-    static_folder="../frontend/static",
+    template_folder=str(TEMPLATE_DIR),
+    static_folder=str(STATIC_DIR),
 )
 logging.basicConfig(level=logging.INFO)
 
@@ -88,7 +90,7 @@ def projects():
 
 @app.route("/cv")
 def cv():
-    has_pdf = (Path(app.static_folder) / CV_PDF).exists()
+    has_pdf = (STATIC_DIR / CV_PDF).exists()
     return render_template(
         "cv.html",
         title="CV",
@@ -96,7 +98,6 @@ def cv():
         cv_pdf=CV_PDF if has_pdf else None,
         description="Curriculum vitae of Luis, full-stack developer.",
     )
-
 
 def validate_contact(form):
     name = " ".join(form.get("name", "").split())  # also strips newlines
@@ -124,10 +125,11 @@ def deliver_message(name, email, message):
         msg["To"] = to_addr
         msg["Reply-To"] = email
         msg.set_content(f"From: {name} <{email}>\n\n{message}")
+        smtp_user = os.getenv("SMTP_USER")
         with smtplib.SMTP(host, int(os.getenv("SMTP_PORT", "587")), timeout=10) as smtp:
             smtp.starttls()
-            if os.getenv("SMTP_USER"):
-                smtp.login(os.getenv("SMTP_USER"), os.getenv("SMTP_PASSWORD", ""))
+            if smtp_user:
+                smtp.login(smtp_user, os.getenv("SMTP_PASSWORD", ""))
             smtp.send_message(msg)
         return
 
