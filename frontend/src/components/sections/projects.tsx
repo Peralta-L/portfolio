@@ -49,7 +49,7 @@ function ProjectCard({ project }: { project: Project }) {
           <div className="mt-auto flex flex-wrap gap-2 pt-6">
             {project.githubUrl ? (
               <Button asChild size="sm" variant="secondary">
-                <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
+                <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" data-mood="wink">
                   <GitHubIcon />
                   Source<span className="sr-only"> code for {project.title}</span>
                 </a>
@@ -57,7 +57,7 @@ function ProjectCard({ project }: { project: Project }) {
             ) : null}
             {project.liveUrl ? (
               <Button asChild size="sm" variant="ghost">
-                <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
+                <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" data-mood="excited">
                   Live demo<span className="sr-only"> of {project.title}</span>
                   <ArrowUpRight />
                 </a>

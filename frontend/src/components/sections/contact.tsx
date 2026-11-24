@@ -26,6 +26,7 @@ export function Contact() {
               <li key={label}>
                 <a
                   href={href}
+                  data-mood={label === "GitHub" ? "wink" : "curious"}
                   {...(href.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})}
                   className="group flex items-center gap-4 rounded-xl border border-border bg-card/40 p-4 transition-colors hover:border-border-strong"
                 >

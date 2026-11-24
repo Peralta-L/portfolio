@@ -49,6 +49,7 @@ export function SiteHeader({ hasResume }: { hasResume: boolean }) {
             <li key={item.id}>
               <a
                 href={`#${item.id}`}
+                data-mood="happy"
                 aria-current={active === item.id ? "location" : undefined}
                 className={cn(
                   "rounded-md px-3 py-2 text-sm transition-colors hover:text-foreground",
@@ -64,7 +65,7 @@ export function SiteHeader({ hasResume }: { hasResume: boolean }) {
         <div className="flex items-center gap-2">
           {hasResume ? (
             <Button asChild size="sm" variant="secondary" className="hidden sm:inline-flex">
-              <a href={profile.resumePath} download>
+              <a href={profile.resumePath} download data-mood="excited">
                 <FileText />
                 Resume
               </a>

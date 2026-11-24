@@ -1,10 +1,6 @@
 import { BrainCircuit, Cloud, Code, Database, Layers, Network, Puzzle } from "lucide-react";
 import type { FocusArea } from "@/types/content";
 
-/**
- * Personal details. Links left empty are hidden everywhere on the site,
- * so visitors never hit a dead link.
- */
 export const profile = {
   name: "Luis Peralta Aguirre",
   shortName: "Luis Peralta",
@@ -12,11 +8,9 @@ export const profile = {
   title: "Backend Engineer | Computer Science Graduate",
   headline: "Building scalable APIs, AI-powered applications, and cloud-ready systems.",
   availability: "Open to backend engineering roles",
-  /** TODO: add your public contact email, e.g. "luis@yourdomain.com". */
-  email: "",
+  email: "fake@outlook.com",
   github: "https://github.com/Peralta-L",
-  /** TODO: add your LinkedIn profile URL. */
-  linkedin: "",
+  linkedin: "https://www.linkedin.com/in/luis-peralta-aguirre-987950375",
   /** Drop your CV at frontend/public/resume.pdf and every "Resume" button appears. */
   resumePath: "/resume.pdf",
   siteUrl: (process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000").replace(/\/$/, ""),

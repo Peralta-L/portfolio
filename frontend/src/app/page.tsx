@@ -24,7 +24,7 @@ export default async function HomePage() {
       <JsonLd skills={skills} />
       <SiteHeader hasResume={resume} />
       <main id="main">
-        <Hero projects={projects} hasResume={resume} />
+        <Hero hasResume={resume} />
         <About />
         <Projects projects={projects} />
         <Architecture />

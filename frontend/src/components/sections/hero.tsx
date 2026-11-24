@@ -1,11 +1,11 @@
 import { ArrowRight, FileText } from "lucide-react";
+import { Avatar } from "@/components/avatar";
 import { GitHubIcon, LinkedInIcon } from "@/components/brand-icons";
 import { Button } from "@/components/ui/button";
 import { profile } from "@/content/profile";
-import type { Project } from "@/types/api";
 
 /** The hero is the LCP element, so it animates with CSS (no JS needed to become visible). */
-export function Hero({ projects, hasResume }: { projects: Project[]; hasResume: boolean }) {
+export function Hero({ hasResume }: { hasResume: boolean }) {
   return (
     <section id="top" aria-labelledby="hero-heading" className="relative isolate overflow-hidden">
       <div aria-hidden="true" className="bg-grid absolute inset-0 -z-10" />
@@ -34,14 +34,14 @@ export function Hero({ projects, hasResume }: { projects: Project[]; hasResume: 
 
           <div className="mt-10 flex flex-wrap items-center gap-3">
             <Button asChild size="lg">
-              <a href="#projects">
+              <a href="#projects" data-mood="happy">
                 View Projects
                 <ArrowRight />
               </a>
             </Button>
             {hasResume ? (
               <Button asChild size="lg" variant="secondary">
-                <a href={profile.resumePath} download>
+                <a href={profile.resumePath} download data-mood="excited">
                   <FileText />
                   Download Resume
                 </a>
@@ -50,14 +50,14 @@ export function Hero({ projects, hasResume }: { projects: Project[]; hasResume: 
             <div className="flex items-center gap-2">
               {profile.github ? (
                 <Button asChild size="icon" variant="outline" className="size-11">
-                  <a href={profile.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub profile">
+                  <a href={profile.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub profile" data-mood="wink">
                     <GitHubIcon />
                   </a>
                 </Button>
               ) : null}
               {profile.linkedin ? (
                 <Button asChild size="icon" variant="outline" className="size-11">
-                  <a href={profile.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile">
+                  <a href={profile.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile" data-mood="curious">
                     <LinkedInIcon />
                   </a>
                 </Button>
@@ -66,62 +66,14 @@ export function Hero({ projects, hasResume }: { projects: Project[]; hasResume: 
           </div>
         </div>
 
-        <ApiConsole projects={projects} />
+        <div className="animate-fade-up relative mx-auto w-full max-w-[400px] [animation-delay:120ms]">
+          <div
+            aria-hidden="true"
+            className="absolute inset-[8%] -z-10 rounded-full bg-[radial-gradient(closest-side,rgb(37_99_235/0.35),transparent)] blur-2xl"
+          />
+          <Avatar className="h-auto w-full drop-shadow-[0_24px_40px_rgb(0_0_0/0.45)]" />
+        </div>
       </div>
     </section>
-  );
-}
-
-/** A stylised request/response against this site's own API: shows, rather than tells, what I build. */
-function ApiConsole({ projects }: { projects: Project[] }) {
-  const sample = projects.slice(0, 2);
-  return (
-    <figure
-      className="animate-fade-up relative min-w-0 rounded-2xl border border-border bg-card/70 shadow-soft backdrop-blur [animation-delay:120ms]"
-      aria-label="Example response from this site's GET /api/projects endpoint"
-    >
-      <div className="flex items-center gap-2 border-b border-border px-4 py-3">
-        <span aria-hidden="true" className="flex gap-1.5">
-          <span className="size-2.5 rounded-full bg-zinc-700" />
-          <span className="size-2.5 rounded-full bg-zinc-700" />
-          <span className="size-2.5 rounded-full bg-zinc-700" />
-        </span>
-        <span className="ml-2 font-mono text-xs text-muted-foreground">portfolio-api · Spring Boot 3</span>
-      </div>
-      <pre className="overflow-x-auto p-5 font-mono text-[12.5px] leading-6 text-zinc-300 sm:text-[13px]">
-        <code>
-          <span className="text-success">GET</span> <span className="text-zinc-100">/api/projects</span>
-          {"\n"}
-          <span className="text-muted-foreground">HTTP/1.1 </span>
-          <span className="text-success">200 OK</span>
-          <span className="text-muted-foreground"> · application/json · 38 ms</span>
-          {"\n\n"}
-          {"["}
-          {sample.map((project, i) => (
-            <span key={project.slug}>
-              {"\n  {\n"}
-              {"    "}
-              <span className="text-accent">&quot;slug&quot;</span>: <span className="text-amber-200">&quot;{project.slug}&quot;</span>,
-              {"\n    "}
-              <span className="text-accent">&quot;stack&quot;</span>: [
-              {project.technologies.slice(0, 3).map((tech, j) => (
-                <span key={tech}>
-                  <span className="text-amber-200">&quot;{tech}&quot;</span>
-                  {j < 2 ? ", " : ""}
-                </span>
-              ))}
-              ]{"\n  }"}
-              {i < sample.length - 1 ? "," : ""}
-            </span>
-          ))}
-          {"\n]"}
-        </code>
-      </pre>
-      <figcaption className="flex flex-wrap gap-x-5 gap-y-2 border-t border-border px-5 py-3 font-mono text-[11px] text-muted-foreground">
-        <span>✓ validated DTOs</span>
-        <span>✓ RFC 9457 errors</span>
-        <span>✓ rate limited</span>
-      </figcaption>
-    </figure>
   );
 }

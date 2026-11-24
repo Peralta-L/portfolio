@@ -23,6 +23,7 @@ export function SiteFooter() {
             <li key={label}>
               <a
                 href={href}
+                data-mood={label === "GitHub" ? "wink" : "curious"}
                 {...(href.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})}
                 className="grid size-10 place-items-center rounded-lg border border-border text-muted-foreground transition-colors hover:border-border-strong hover:text-foreground"
               >

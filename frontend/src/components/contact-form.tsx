@@ -120,7 +120,7 @@ export function ContactForm() {
       </div>
 
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-        <Button type="submit" size="lg" disabled={submitting} className="w-full sm:w-auto">
+        <Button type="submit" size="lg" disabled={submitting} className="w-full sm:w-auto" data-mood="excited">
           {submitting ? <Loader2 className="animate-spin" /> : <Send />}
           {submitting ? "Sending…" : "Send message"}
         </Button>
