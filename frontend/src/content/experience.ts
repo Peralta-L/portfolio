@@ -13,11 +13,11 @@ export const fallbackExperience: Experience[] = [
     endDate: null,
     current: true,
     summary:
-      "Designing and building full-stack applications end to end, with a focus on Java and Spring Boot APIs, relational data modeling and cloud deployment.",
+      "Designing and building full-stack applications end to end, with a focus on backend APIs, relational data modeling and AI integration.",
     highlights: [
-      "Built REST APIs with Spring Boot, Spring Security and PostgreSQL using layered, testable architecture.",
-      "Integrated LLM APIs into applications behind resilient, provider-agnostic service interfaces.",
-      "Containerized services with Docker and automated builds and deployments with GitHub Actions.",
+      "Built REST APIs in FastAPI, Express and Spring Boot backed by PostgreSQL and SQLite, with layered controller/service designs.",
+      "Integrated a Groq-hosted LLM to generate recipes from structured JSON output, personalised by allergies and cuisine preferences.",
+      "Delivered a team capstone with three teammates, owning the database schema, authentication and portfolio services.",
     ],
   },
   {

@@ -8,7 +8,7 @@ import "./globals.css";
 const geistSans = Geist({ subsets: ["latin"], variable: "--font-geist-sans", display: "swap" });
 const geistMono = Geist_Mono({ subsets: ["latin"], variable: "--font-geist-mono", display: "swap" });
 
-const description = `${profile.title}. ${profile.headline} Java, Spring Boot, PostgreSQL, cloud and AI integration.`;
+const description = `${profile.title}. ${profile.headline} Java, Python, TypeScript, PostgreSQL, cloud and AI integration.`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(profile.siteUrl),
@@ -25,6 +25,9 @@ export const metadata: Metadata = {
     "Backend Engineer",
     "Java",
     "Spring Boot",
+    "Python",
+    "FastAPI",
+    "TypeScript",
     "PostgreSQL",
     "REST API",
     "Software Engineer",

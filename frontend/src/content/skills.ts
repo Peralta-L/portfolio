@@ -2,9 +2,13 @@ import type { SkillGroup } from "@/types/api";
 
 /** Fallback copy of GET /api/skills. Keep in sync with backend V2__seed_content.sql. */
 export const fallbackSkills: SkillGroup[] = [
-  { category: "BACKEND", label: "Backend", skills: ["Java", "Spring Boot", "PostgreSQL", "REST APIs", "JWT", "Docker"] },
-  { category: "FRONTEND", label: "Frontend", skills: ["TypeScript", "Next.js", "Tailwind CSS"] },
-  { category: "CLOUD", label: "Cloud & DevOps", skills: ["Azure", "Vercel", "Render", "GitHub Actions"] },
+  {
+    category: "BACKEND",
+    label: "Backend",
+    skills: ["Java", "Spring Boot", "Python", "FastAPI", "Node.js", "Express", "PostgreSQL", "Prisma", "REST APIs", "JWT", "LLM APIs", "Docker"],
+  },
+  { category: "FRONTEND", label: "Frontend", skills: ["TypeScript", "React", "Next.js", "React Native", "Tailwind CSS"] },
+  { category: "CLOUD", label: "Cloud & DevOps", skills: ["Azure", "Vercel", "Render", "Neon", "GitHub Actions"] },
 ];
 
 export const skillCategoryBlurb: Record<SkillGroup["category"], string> = {

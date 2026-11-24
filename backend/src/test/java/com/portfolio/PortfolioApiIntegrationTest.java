@@ -74,8 +74,8 @@ class PortfolioApiIntegrationTest {
                 .andExpect(status().isOk())
                 .andExpect(header().string("Cache-Control", "max-age=600, public"))
                 .andExpect(jsonPath("$", hasSize(4)))
-                .andExpect(jsonPath("$[0].slug", is("ai-food-tracker")))
-                .andExpect(jsonPath("$[0].technologies[0]", is("Java 21")))
+                .andExpect(jsonPath("$[0].slug", is("what-to-eat")))
+                .andExpect(jsonPath("$[0].technologies[0]", is("Python")))
                 .andExpect(jsonPath("$[3].githubUrl", is("https://github.com/Peralta-L/portfolio")));
     }
 
@@ -86,7 +86,7 @@ class PortfolioApiIntegrationTest {
                 .andExpect(jsonPath("$", hasSize(3)))
                 .andExpect(jsonPath("$[0].category", is("BACKEND")))
                 .andExpect(jsonPath("$[0].label", is("Backend")))
-                .andExpect(jsonPath("$[0].skills", hasSize(6)))
+                .andExpect(jsonPath("$[0].skills", hasSize(12)))
                 .andExpect(jsonPath("$[2].label", is("Cloud & DevOps")));
     }
 

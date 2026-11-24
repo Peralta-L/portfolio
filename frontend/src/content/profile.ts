@@ -1,4 +1,4 @@
-import { BrainCircuit, Cloud, Coffee, Database, Layers, Network, Puzzle } from "lucide-react";
+import { BrainCircuit, Cloud, Code, Database, Layers, Network, Puzzle } from "lucide-react";
 import type { FocusArea } from "@/types/content";
 
 /**
@@ -24,17 +24,17 @@ export const profile = {
 
 export const bio: string[] = [
   "I'm a backend engineer and Computer Science graduate from the University of Maryland Global Campus. I design and build the parts of software people rarely see but always depend on: APIs that stay fast under load, data models that age well, and services that fail gracefully.",
-  "My core stack is Java and Spring Boot on PostgreSQL. I care about clean, layered architecture, explicit contracts between systems, and tests that make change cheap. Increasingly, I integrate large language models into products, treating them like any other unreliable dependency: behind clear interfaces, with timeouts, validation and fallbacks.",
+  "I work across Java, Python and TypeScript: Spring Boot and FastAPI services, Node.js and Next.js APIs, usually on PostgreSQL. Whatever the language, I care about clean, layered architecture, explicit contracts between systems, and tests that make change cheap. Increasingly, I build AI features into products, like LLM-generated recipes in my What to Eat app, and I treat the model like any other external dependency: structured output, validated before it is used.",
   "Before software, I served in the U.S. Armed Forces, working in high-responsibility environments with international teams and sensitive information. That taught me discipline, calm under pressure and clear communication, which I bring to every code review, incident and design discussion.",
 ];
 
 export const focusAreas: FocusArea[] = [
-  { title: "Java", icon: Coffee, description: "Modern Java 21: records, sealed types and virtual threads, written for readability." },
-  { title: "Spring Boot", icon: Layers, description: "Production services with Spring Web, Data JPA, Security and Validation." },
+  { title: "Java, Python & TypeScript", icon: Code, description: "Three languages, one standard: readable, typed and tested code." },
+  { title: "Spring Boot & FastAPI", icon: Layers, description: "REST services with validation, auth and clean controller/service layers." },
   { title: "API Architecture", icon: Network, description: "Resource-oriented REST, DTO boundaries, versioning and RFC 9457 errors." },
   { title: "Databases", icon: Database, description: "PostgreSQL schema design, indexing, migrations and query tuning." },
-  { title: "Cloud Services", icon: Cloud, description: "Containerized deploys on Azure, Render and Vercel with CI/CD pipelines." },
-  { title: "AI Integration", icon: BrainCircuit, description: "LLM features behind resilient, provider-agnostic service interfaces." },
+  { title: "Cloud Services", icon: Cloud, description: "Deploys on Vercel, Render and Neon, with Docker and GitHub Actions CI." },
+  { title: "AI Integration", icon: BrainCircuit, description: "LLM features with structured JSON output, personalised and validated server-side." },
   { title: "Problem Solving", icon: Puzzle, description: "Strong CS fundamentals: data structures, algorithms and trade-off analysis." },
 ];
 

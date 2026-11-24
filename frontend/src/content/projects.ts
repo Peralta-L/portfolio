@@ -1,4 +1,4 @@
-import { Apple, BookOpenText, Building2, LayoutTemplate } from "lucide-react";
+import { ChefHat, LayoutTemplate, ScanLine, TrendingUp } from "lucide-react";
 import type { Project } from "@/types/api";
 import type { ProjectVisual } from "@/types/content";
 
@@ -8,55 +8,57 @@ import type { ProjectVisual } from "@/types/content";
  */
 export const fallbackProjects: Project[] = [
   {
-    slug: "ai-food-tracker",
-    title: "AI Food Tracker",
+    slug: "what-to-eat",
+    title: "What to Eat",
     summary:
-      "Virtual fridge that tracks ingredients and expiry dates, then uses an LLM to suggest meals from what you already have.",
+      "AI meal planner: a mobile virtual fridge that tracks expiry dates and generates recipes from the ingredients you already have.",
     description:
-      "Users keep a live inventory of their fridge and pantry. A scheduled job flags items close to expiry, and an AI service turns the remaining ingredients into ranked meal suggestions with estimated nutrition. LLM calls sit behind a provider-agnostic interface with timeouts, retries and response validation, so a slow or malformed model response never breaks the core inventory features.",
-    githubUrl: "https://github.com/Peralta-L",
+      "Users log fridge items with quantities and expiry dates, and an expiration calendar shows what to use first. A FastAPI backend sends the available ingredients, allergies and cuisine preferences to a Groq-hosted LLM in JSON mode, then parses and stores the generated recipes. Includes JWT authentication with bcrypt-hashed passwords, a 10-table PostgreSQL schema accessed asynchronously through asyncpg, and saved, favourite and cooked-recipe history.",
+    githubUrl: "https://github.com/Peralta-L/What_to_eat",
     featured: true,
-    technologies: ["Java 21", "Spring Boot", "PostgreSQL", "LLM API", "React Native", "Docker"],
+    technologies: ["Python", "FastAPI", "PostgreSQL", "Groq LLM", "JWT", "React Native", "Expo", "TypeScript"],
   },
   {
-    slug: "recipe-intelligence",
-    title: "Recipe Intelligence Platform",
-    summary: "Recipe search engine that normalizes ingredients and ranks results with semantic vector search.",
+    slug: "stock-portfolio-assistant",
+    title: "Stock Portfolio Assistant",
+    summary:
+      "Team capstone: a full-stack app for tracking stock holdings, live quotes and portfolio gains and losses.",
     description:
-      "An ingestion pipeline parses recipes from multiple formats, normalizes ingredient names and units, and stores embeddings in PostgreSQL with pgvector. The search API combines full-text and vector similarity and supports filtering by diet, cooking time and available ingredients. Hot queries are cached in Redis.",
-    githubUrl: "https://github.com/Peralta-L",
+      "Built with a four-person team for the CMSC 495 capstone. I designed the Prisma/PostgreSQL schema and built the authentication (NextAuth with bcrypt) and the user, holdings, transactions and portfolio services and controllers. Server-side API routes proxy the Finnhub market-data API for quotes, symbol search, batch quotes and price history, so the API key never reaches the browser.",
+    githubUrl: "https://github.com/Group1-Capstone-Project/Stock-Portfolio-Assistant",
     featured: true,
-    technologies: ["Java 21", "Spring Boot", "PostgreSQL", "pgvector", "Redis", "Next.js"],
+    technologies: ["Next.js", "TypeScript", "PostgreSQL", "Prisma", "NextAuth", "Finnhub API", "Tailwind CSS"],
   },
   {
-    slug: "enterprise-java-api",
-    title: "Enterprise Java API",
+    slug: "asset-scanner",
+    title: "Asset Scanner",
     summary:
-      "Production-style Spring Boot REST API with JWT authentication, role-based access and a full CI/CD pipeline.",
+      "Browser-based IT inventory tool that reads barcodes and serial-number labels straight from a phone camera.",
     description:
-      "A layered Spring Boot service demonstrating enterprise patterns: JWT authentication with refresh tokens, role-based authorization, DTO mapping, global RFC 9457 error handling, Flyway migrations, OpenAPI documentation, and integration tests against a real PostgreSQL database. GitHub Actions builds, tests and publishes a Docker image on every merge.",
-    githubUrl: "https://github.com/Peralta-L",
+      "Scans asset tags with the native BarcodeDetector API and reads printed serial numbers with Tesseract.js OCR, with camera zoom controls for small labels. Scanned assets go through an Express 5 REST API (create, review, update, delete) and are stored in SQLite, and a review page lists scanned assets for correction or removal.",
+    githubUrl: "https://github.com/Peralta-L/Asset_Scanner",
     featured: true,
-    technologies: ["Java 21", "Spring Security", "JWT", "PostgreSQL", "Docker", "GitHub Actions"],
+    technologies: ["Node.js", "Express", "SQLite", "JavaScript", "Tesseract.js", "Web APIs"],
   },
   {
     slug: "portfolio-platform",
     title: "Personal Portfolio Platform",
-    summary: "This website: a Next.js frontend on Vercel backed by a Spring Boot API and PostgreSQL on Render.",
+    summary:
+      "This website: a Next.js frontend on Vercel backed by a Spring Boot API and PostgreSQL on Render.",
     description:
       "Statically generated Next.js 15 frontend with incremental revalidation, reading content from a Spring Boot 3 API. The contact form posts to a validated, rate-limited endpoint that persists messages to PostgreSQL. If the API is cold or unavailable, the site falls back to bundled content so it never renders empty.",
     githubUrl: "https://github.com/Peralta-L/portfolio",
     featured: true,
-    technologies: ["Next.js", "TypeScript", "Tailwind CSS", "Spring Boot", "PostgreSQL", "Vercel"],
+    technologies: ["Java 21", "Spring Boot", "PostgreSQL", "Next.js", "TypeScript", "Tailwind CSS"],
   },
 ];
 
 const defaultVisual: ProjectVisual = { icon: LayoutTemplate, gradient: ["#1e3a8a", "#0f172a"] };
 
 const visuals: Record<string, ProjectVisual> = {
-  "ai-food-tracker": { icon: Apple, gradient: ["#065f46", "#0c1a17"] },
-  "recipe-intelligence": { icon: BookOpenText, gradient: ["#7c2d12", "#1c1210"] },
-  "enterprise-java-api": { icon: Building2, gradient: ["#1e3a8a", "#0b1220"] },
+  "what-to-eat": { icon: ChefHat, gradient: ["#065f46", "#0c1a17"] },
+  "stock-portfolio-assistant": { icon: TrendingUp, gradient: ["#1e3a8a", "#0b1220"] },
+  "asset-scanner": { icon: ScanLine, gradient: ["#7c2d12", "#1c1210"] },
   "portfolio-platform": { icon: LayoutTemplate, gradient: ["#4c1d95", "#120d1f"] },
 };
 

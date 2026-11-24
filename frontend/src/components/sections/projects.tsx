@@ -13,7 +13,7 @@ export function Projects({ projects }: { projects: Project[] }) {
       id="projects"
       eyebrow="Featured Projects"
       title="Systems I've designed and built."
-      description="Each project is an exercise in a different backend concern: AI integration, search, security and delivery."
+      description="From an AI-powered mobile app to a team-built stock tracker, each project tackles a different engineering problem."
     >
       <ul className="grid gap-6 md:grid-cols-2">
         {projects.map((project, i) => (

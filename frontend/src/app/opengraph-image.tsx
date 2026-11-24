@@ -46,7 +46,7 @@ export default function OpengraphImage() {
           <div style={{ fontSize: 30, color: "#a1a1aa", maxWidth: 900 }}>{profile.headline}</div>
         </div>
         <div style={{ display: "flex", gap: 14, fontSize: 22, color: "#d4d4d8" }}>
-          {["Java", "Spring Boot", "PostgreSQL", "REST APIs", "Cloud", "AI"].map((tag) => (
+          {["Java", "Python", "TypeScript", "Spring Boot", "PostgreSQL", "AI"].map((tag) => (
             <div key={tag} style={{ display: "flex", padding: "8px 16px", borderRadius: 10, border: "1px solid #3f3f46" }}>
               {tag}
             </div>
