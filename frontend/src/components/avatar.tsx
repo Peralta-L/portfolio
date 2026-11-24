@@ -253,20 +253,20 @@ export function Avatar({ className }: { className?: string }) {
           <stop offset="100%" stopColor={HAIR} />
         </linearGradient>
         <linearGradient id="beard" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor={HAIR} stopOpacity="0.55" />
-          <stop offset="100%" stopColor={HAIR} stopOpacity="0.85" />
+          <stop offset="0%" stopColor={HAIR} stopOpacity="0.28" />
+          <stop offset="100%" stopColor={HAIR} stopOpacity="0.62" />
         </linearGradient>
       </defs>
 
       {/* Shirt and neck stay still; only the head moves. */}
-      <path d="M172 285 L228 285 L233 352 L200 386 L167 352 Z" fill={SKIN.shadow} />
+      <path d="M164 280 L236 280 L240 336 L200 370 L160 336 Z" fill={SKIN.shadow} />
       <path
-        d="M52 440 C58 384 104 360 158 350 L200 386 L242 350 C296 360 342 384 348 440 Z"
+        d="M40 440 C46 372 100 344 156 334 L200 370 L244 334 C300 344 354 372 360 440 Z"
         fill="url(#shirt)"
       />
-      <path d="M158 348 L200 386 L180 404 L146 362 Z" fill={SHIRT.light} stroke={SHIRT.shadow} strokeWidth="1.5" />
-      <path d="M242 348 L200 386 L220 404 L254 362 Z" fill={SHIRT.light} stroke={SHIRT.shadow} strokeWidth="1.5" />
-      <circle cx="200" cy="418" r="3.2" fill="#f7fafc" stroke={SHIRT.shadow} />
+      <path d="M156 332 L200 370 L180 388 L144 346 Z" fill={SHIRT.light} stroke={SHIRT.shadow} strokeWidth="1.5" />
+      <path d="M244 332 L200 370 L220 388 L256 346 Z" fill={SHIRT.light} stroke={SHIRT.shadow} strokeWidth="1.5" />
+      <circle cx="200" cy="404" r="3.2" fill="#f7fafc" stroke={SHIRT.shadow} />
       <ellipse cx="200" cy="304" rx="42" ry="10" fill={SKIN.deep} opacity="0.45" />
 
       <g ref={headRef}>
@@ -285,13 +285,13 @@ export function Avatar({ className }: { className?: string }) {
         <g ref={faceRef}>
           {/* beard and mustache */}
           <path
-            d="M118 205 C120 250 140 292 168 306 C182 314 192 318 200 318 C208 318 218 314 232 306 C260 292 280 250 282 205 L276 205 C272 238 258 258 244 262 C236 252 222 246 200 246 C178 246 164 252 156 262 C142 258 128 238 124 205 Z"
+            d="M118 205 C120 250 140 292 168 306 C182 314 192 318 200 318 C208 318 218 314 232 306 C260 292 280 250 282 205 L277 205 C276 236 268 254 252 266 C240 256 222 250 200 250 C178 250 160 256 148 266 C132 254 124 236 123 205 Z"
             fill="url(#beard)"
           />
           <path
             d="M170 255 C180 245 193 245 200 249 C207 245 220 245 230 255 C220 254 210 253 200 256 C190 253 180 254 170 255 Z"
             fill={HAIR}
-            opacity="0.85"
+            opacity="0.7"
           />
           <ellipse cx="150" cy="228" rx="14" ry="8" fill="#d77a6a" style={{ ...fade(true), opacity: mood === "happy" || mood === "excited" ? 0.3 : 0.12 }} />
           <ellipse cx="250" cy="228" rx="14" ry="8" fill="#d77a6a" style={{ ...fade(true), opacity: mood === "happy" || mood === "excited" ? 0.3 : 0.12 }} />
