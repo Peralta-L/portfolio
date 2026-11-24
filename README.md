@@ -1,146 +1,189 @@
-# Portfolio Template
+# Portfolio Website — Flask + HTML/CSS/JavaScript
 
-#### Description:
+A personal portfolio website built with **Python, Flask, HTML, CSS, and JavaScript**.
 
-# Portfolio Website (Flask + Static Frontend)
+The website showcases my background, technical skills, projects, CV, and contact information.
 
-This project is a **portfolio template website** built with a static frontend and a lightweight Flask backend.  
-Flask is used only to serve HTML templates and static files such as CSS, JavaScript, images, and icons.
+> **Note:** The application currently runs locally. Deployment is planned for a future version.
 
-The frontend is written using **HTML, CSS, and JavaScript**, while the backend is written in **Python using Flask**.  
-The project is intentionally simple and easy to customize.
+---
+
+##  Features
+
+- Responsive portfolio website
+- Home / landing page
+- About Me section
+- Technical Skills section
+- Projects showcase
+- CV / Resume section
+- Contact section
+- Reusable HTML templates with Jinja2
+- Flask routing and template rendering
+- Custom CSS styling
+- JavaScript-based UI interactions and animations
 
 ---
 
 ## Tech Stack
 
 ### Frontend
-- HTML
-- CSS
+
+- HTML5
+- CSS3
 - JavaScript
 
 ### Backend
+
 - Python
 - Flask
+- Jinja2
 
 ---
 
-### File and Folder Explanation
+## How to Run Locally
+
+### Requirements
+
+Make sure you have installed:
+
+- Python 3.8+
+- Flask
+- Git
+
+### 1. Clone the repository
+
+    git clone YOUR_REPOSITORY_URL
+    cd portfolio
+
+### 2. Install Flask
+
+    pip install flask
+
+### 3. Start the Flask application
+
+Navigate to the backend directory:
+
+    cd backend
+
+Then start the application:
+
+    flask run
+
+### 4. Open the website
+
+After starting Flask, open the URL shown in the terminal.
+
+Usually:
+
+    http://127.0.0.1:5000
+
+The portfolio website should now be available in your browser.
+
+---
+
+## 📁 Project Structure
+
+    .
+    ├── backend/
+    │   └── app.py
+    │
+    ├── frontend/
+    │   ├── static/
+    │   │   ├── mainStyle.css
+    │   │   ├── mainscript.js
+    │   │   ├── script.js
+    │   │   ├── icons/
+    │   │   └── images/
+    │   │
+    │   └── templates/
+    │       ├── base.html
+    │       ├── header.html
+    │       ├── index.html
+    │       ├── aboutme.html
+    │       ├── skills.html
+    │       ├── projects.html
+    │       ├── contact.html
+    │       └── cv.html
+    │
+    └── README.md
+
+---
+
 ## Backend
 
-- backend/app.py
+The Flask backend is located in:
 
-This is the main Flask application file. It:
-Initializes the Flask app, 
-Defines routes for each page (home, about, skills, projects, contact, CV)
-Renders HTML templates using render_template
-Serves static files automatically through Flask
-The backend does not contain complex logic or data handling, which keeps it easy to read and maintain.
+    backend/app.py
 
-### Frontend – Templates
+It is responsible for:
 
-- templates/base.html
+- Initializing the Flask application
+- Defining routes
+- Rendering HTML templates
+- Connecting the frontend templates with Flask
+- Serving static assets
 
-This is the base layout file. It contains:
-The HTML <head> section
-Links to CSS and JavaScript files
-A block structure that other templates extend
-Using a base template avoids code duplication and makes global layout changes easy.
-templates/header.html
-This file contains the navigation bar and header elements. It is included in other templates so the navigation stays consistent across all pages.
+Flask provides the backend structure, routing, template rendering, and serving of static files.
 
-- templates/index.html
+---
 
-The landing page of the portfolio. It introduces the user and serves as the main entry point of the website.
-templates/aboutme.html
-Contains information about the portfolio owner, such as background, interests, and goals.
-templates/skills.html
-Lists technical skills, tools, and technologies. This section is structured for clarity and easy expansion.
+## Frontend
 
-- templates/projects.html
+The frontend uses **HTML, CSS, and JavaScript**.
 
-Displays showcased projects. Each project section can include a title, description, and related visuals.
-templates/contact.html
-Provides contact information or a contact section where users can find ways to reach the portfolio owner.
+The project uses reusable Jinja2 templates to reduce code duplication.
 
-- templates/cv.html
+### Templates
 
-Displays or links to a résumé or CV, allowing visitors to quickly view professional qualifications.
+- `base.html` — Base website layout
+- `header.html` — Navigation and header
+- `index.html` — Homepage
+- `aboutme.html` — About section
+- `skills.html` — Technical skills
+- `projects.html` — Projects
+- `contact.html` — Contact information
+- `cv.html` — CV / Resume
 
-### Frontend – Static Files
+### Static Files
 
-- static/mainStyle.css
+The `static/` directory contains:
 
-The main stylesheet responsible for:
-Page layout
-Typography
-Color scheme
-Responsive design
-static/mainscript.js and static/script.js
-These JavaScript files handle:
-Interactive UI behavior
-Animations or dynamic elements
-Client-side enhancements
+- CSS stylesheets
+- JavaScript files
+- Icons
+- Images
 
-- static/icons/
+---
 
-Contains icon assets used throughout the website.
+## Purpose
 
-- static/images/
+This project was created to build and showcase a personal developer portfolio while practicing:
 
-Stores images displayed in the portfolio, such as profile pictures or project screenshots.
+- Flask web development
+- Python
+- HTML/CSS
+- JavaScript
+- Jinja2 templating
+- Responsive web design
+- Project organization
 
-------
+---
 
-NOTE: Before running the project, make sure you have the following installed:
+## Future Improvements
 
-- **Python 3.8 or higher**
-- **Flask**
+Planned improvements include:
 
-------
+- Deploying the website online
+- Improving accessibility
+- Adding additional animations and interactions
+- Improving mobile responsiveness
+- Adding a functional contact form
+- Further optimizing website performance
 
-### how to Run the Project
-## Requirements
+---
 
-Make sure Flask is installed:
+## Author
 
-pip install flask
+Luis Peralta
 
-
-Navigate to the backend folder:
-
-cd backend
-
-Run the Flask application:
-
-flask run
-
-
-Open your browser and go to the URL shown in the terminal
-(usually: http://127.0.0.1:5000)
-
-and you will see a website open where you could see the project
-
-
-### Project Structure: 
-
-.
-├── backend/
-│   └── app.py
-├── frontend/
-│   ├── static/
-│   │   ├── mainStyle.css
-│   │   ├── mainscript.js
-│   │   ├── script.js
-│   │   ├── icons/
-│   │   └── images/
-│   └── templates/
-│       ├── base.html
-│       ├── header.html
-│       ├── index.html
-│       ├── aboutme.html
-│       ├── skills.html
-│       ├── projects.html
-│       ├── contact.html
-│       └── cv.html
-└── README.md
+Computer Science Graduate | Aspiring Software Developer
