@@ -59,7 +59,6 @@ portfolio/
 │       ├── config/               Typed configuration properties
 │       └── exception/            Global RFC 9457 exception handler
 │   └── src/main/resources/db/migration/   Flyway schema + seed data
-├── legacy/                       The previous Flask version of the site
 ├── docker-compose.yml            Local PostgreSQL
 ├── render.yaml                   Render Blueprint (API + database)
 └── .github/workflows/ci.yml      Build, lint, typecheck, test
@@ -122,6 +121,7 @@ If `NEXT_PUBLIC_API_URL` is unset, the site uses bundled content and the contact
 | `DB_POOL_SIZE`        | `5`                     | Hikari max pool size |
 | `ALLOWED_ORIGINS`     | `http://localhost:3000` | Comma-separated CORS origins (your Vercel domains) |
 | `CONTACT_RATE_LIMIT`  | `5`                     | Contact messages allowed per IP per window |
+| `CONTACT_GLOBAL_RATE_LIMIT` | `30`              | Contact messages allowed from everyone together per window |
 | `CONTACT_RATE_WINDOW` | `PT1H`                  | Rate-limit window (ISO-8601 duration) |
 | `PORT`                | `8080`                  | HTTP port (Render sets this) |
 

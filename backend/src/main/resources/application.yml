@@ -47,4 +47,5 @@ app:
     allowed-origins: ${ALLOWED_ORIGINS:http://localhost:3000}
   rate-limit:
     max-requests: ${CONTACT_RATE_LIMIT:5}
+    global-max-requests: ${CONTACT_GLOBAL_RATE_LIMIT:30}
     window: ${CONTACT_RATE_WINDOW:PT1H}

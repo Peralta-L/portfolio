@@ -1,7 +1,6 @@
 import { Mail } from "lucide-react";
 import { GitHubIcon, LinkedInIcon } from "@/components/brand-icons";
 import { ContactForm } from "@/components/contact-form";
-import { Reveal } from "@/components/reveal";
 import { Section } from "@/components/section";
 import { profile } from "@/content/profile";
 
@@ -15,39 +14,34 @@ export function Contact() {
   return (
     <Section
       id="contact"
-      eyebrow="Contact"
       title="Let's build something reliable."
       description="Hiring for a backend role, or want to talk about an API or system design? Send a message. I read every one and reply within a couple of days."
     >
-      <div className="grid gap-10 lg:grid-cols-[1fr_1.5fr] lg:gap-16">
-        <Reveal>
-          <ul className="space-y-3">
-            {channels.map(({ label, value, href, icon: Icon }) => (
-              <li key={label}>
-                <a
-                  href={href}
-                  data-mood={label === "GitHub" ? "wink" : "curious"}
-                  {...(href.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-                  className="group flex items-center gap-4 rounded-xl border border-border bg-card/40 p-4 transition-colors hover:border-border-strong"
-                >
-                  <span className="grid size-10 place-items-center rounded-lg border border-border bg-background text-muted-foreground transition-colors group-hover:text-foreground">
-                    <Icon className="size-4" />
+      <div className="grid gap-10 md:ml-48 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.6fr)] lg:gap-12">
+        <ul className="content-start divide-y divide-border border-y border-border">
+          {channels.map(({ label, value, href, icon: Icon }) => (
+            <li key={label}>
+              <a
+                href={href}
+                data-mood={label === "GitHub" ? "wink" : "curious"}
+                {...(href.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                className="group flex items-center gap-4 py-4"
+              >
+                <Icon aria-hidden="true" className="size-4 shrink-0 text-(--span)" />
+                <span className="min-w-0">
+                  <span className="block text-sm text-muted-foreground">{label}</span>
+                  <span className="block truncate text-[15px] font-semibold underline-offset-4 group-hover:underline">
+                    {value}
                   </span>
-                  <span className="min-w-0">
-                    <span className="block text-xs text-muted-foreground">{label}</span>
-                    <span className="block truncate text-sm text-zinc-200">{value}</span>
-                  </span>
-                </a>
-              </li>
-            ))}
-          </ul>
-        </Reveal>
+                </span>
+              </a>
+            </li>
+          ))}
+        </ul>
 
-        <Reveal delay={0.06}>
-          <div className="relative rounded-2xl border border-border bg-card/50 p-6 shadow-soft sm:p-8">
-            <ContactForm />
-          </div>
-        </Reveal>
+        <div className="relative rounded-[3px] border border-border-strong bg-card p-6 sm:p-8">
+          <ContactForm />
+        </div>
       </div>
     </Section>
   );

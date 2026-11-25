@@ -74,7 +74,7 @@ export function ContactForm() {
   return (
     <form onSubmit={onSubmit} noValidate className="space-y-5" aria-describedby="form-status">
       {!isContactConfigured ? (
-        <p className="rounded-lg border border-border-strong bg-muted/40 px-4 py-3 text-sm text-zinc-300">
+        <p className="rounded-[3px] border border-border-strong bg-muted px-4 py-3 text-sm text-foreground">
           The contact form isn&apos;t connected yet. Please use the links on this page in the meantime.
         </p>
       ) : null}

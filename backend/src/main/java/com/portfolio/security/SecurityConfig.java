@@ -34,7 +34,8 @@ public class SecurityConfig {
         // servlet container, which would put it in front of the security chain a second time.
         var limits = properties.rateLimit();
         var limiter = new SlidingWindowRateLimiter(limits.maxRequests(), limits.window(), Clock.systemUTC());
-        var contactRateLimitFilter = new ContactRateLimitFilter(limiter, objectMapper);
+        var globalLimiter = new SlidingWindowRateLimiter(limits.globalMaxRequests(), limits.window(), Clock.systemUTC());
+        var contactRateLimitFilter = new ContactRateLimitFilter(limiter, globalLimiter, objectMapper);
 
         return http
                 .cors(Customizer.withDefaults())

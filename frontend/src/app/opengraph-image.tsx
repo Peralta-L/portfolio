@@ -17,8 +17,8 @@ export default function OpengraphImage() {
           flexDirection: "column",
           justifyContent: "space-between",
           padding: "72px",
-          background: "radial-gradient(80% 90% at 50% 0%, #172554 0%, #09090b 70%)",
-          color: "#fafafa",
+          background: "#e9ecef",
+          color: "#121820",
           fontFamily: "sans-serif",
         }}
       >
@@ -31,23 +31,24 @@ export default function OpengraphImage() {
               width: 64,
               height: 64,
               borderRadius: 14,
-              background: "#2563eb",
+              background: "#121820",
+              color: "#f7f8f9",
               fontSize: 26,
               fontWeight: 700,
             }}
           >
             {profile.initials}
           </div>
-          <div style={{ fontSize: 26, color: "#a1a1aa" }}>Portfolio</div>
+          <div style={{ fontSize: 26, color: "#4a5563" }}>Portfolio</div>
         </div>
         <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
           <div style={{ fontSize: 76, fontWeight: 700, letterSpacing: -2 }}>{profile.name}</div>
-          <div style={{ fontSize: 32, color: "#60a5fa" }}>{profile.title}</div>
-          <div style={{ fontSize: 30, color: "#a1a1aa", maxWidth: 900 }}>{profile.headline}</div>
+          <div style={{ fontSize: 32, color: "#2a3bc9" }}>{profile.title}</div>
+          <div style={{ fontSize: 30, color: "#4a5563", maxWidth: 900 }}>{profile.headline}</div>
         </div>
-        <div style={{ display: "flex", gap: 14, fontSize: 22, color: "#d4d4d8" }}>
+        <div style={{ display: "flex", gap: 14, fontSize: 22, color: "#121820" }}>
           {["Java", "Python", "TypeScript", "Spring Boot", "PostgreSQL", "AI"].map((tag) => (
-            <div key={tag} style={{ display: "flex", padding: "8px 16px", borderRadius: 10, border: "1px solid #3f3f46" }}>
+            <div key={tag} style={{ display: "flex", padding: "8px 16px", borderRadius: 10, border: "1px solid #9aa4b0" }}>
               {tag}
             </div>
           ))}

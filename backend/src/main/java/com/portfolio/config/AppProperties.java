@@ -23,9 +23,10 @@ public record AppProperties(@Valid @NotNull Cors cors, @Valid @NotNull RateLimit
     }
 
     /**
-     * @param maxRequests requests allowed per client within {@code window}
-     * @param window      length of the sliding window
+     * @param maxRequests       requests allowed per client within {@code window}
+     * @param globalMaxRequests requests allowed from all clients together within {@code window}
+     * @param window            length of the sliding window
      */
-    public record RateLimit(@Min(1) int maxRequests, @NotNull Duration window) {
+    public record RateLimit(@Min(1) int maxRequests, @Min(1) int globalMaxRequests, @NotNull Duration window) {
     }
 }

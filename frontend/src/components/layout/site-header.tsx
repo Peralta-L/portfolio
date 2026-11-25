@@ -1,7 +1,7 @@
 "use client";
 
 import { FileText, Menu, X } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useEffect, useState, type CSSProperties } from "react";
 import { Button } from "@/components/ui/button";
 import { navigation, profile } from "@/content/profile";
 import { useActiveSection } from "@/hooks/use-active-section";
@@ -33,18 +33,18 @@ export function SiteHeader({ hasResume }: { hasResume: boolean }) {
     <header
       className={cn(
         "sticky top-0 z-50 border-b transition-colors duration-300",
-        scrolled || open ? "border-border bg-background/80 backdrop-blur-xl" : "border-transparent",
+        scrolled || open ? "border-border bg-background/85 backdrop-blur-md" : "border-transparent",
       )}
     >
-      <nav aria-label="Main" className="mx-auto flex h-16 max-w-6xl items-center justify-between px-5 sm:px-8">
+      <nav aria-label="Main" className="mx-auto flex h-16 max-w-[84rem] items-center justify-between gap-6 px-5 sm:px-8">
         <a href="#top" className="group flex items-center gap-2.5 rounded-md" aria-label={`${profile.name}, back to top`}>
-          <span className="grid size-8 place-items-center rounded-lg bg-primary font-mono text-xs font-semibold text-white shadow-glow">
+          <span className="grid size-8 place-items-center rounded-sm bg-primary font-mono text-[11px] font-semibold text-primary-foreground">
             {profile.initials}
           </span>
-          <span className="hidden text-sm font-medium tracking-tight sm:inline">{profile.shortName}</span>
+          <span className="hidden text-sm font-semibold sm:inline">{profile.shortName}</span>
         </a>
 
-        <ul className="hidden items-center gap-1 md:flex">
+        <ul className="hidden items-center gap-1 md:flex xl:hidden">
           {navigation.map((item) => (
             <li key={item.id}>
               <a
@@ -62,7 +62,11 @@ export function SiteHeader({ hasResume }: { hasResume: boolean }) {
           ))}
         </ul>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-3">
+          <p className="hidden items-center gap-2 font-mono text-[11px] text-muted-foreground lg:flex">
+            <span aria-hidden="true" className="size-2 rounded-full bg-success" />
+            {profile.availability}
+          </p>
           {hasResume ? (
             <Button asChild size="sm" variant="secondary" className="hidden sm:inline-flex">
               <a href={profile.resumePath} download data-mood="excited">
@@ -85,15 +89,22 @@ export function SiteHeader({ hasResume }: { hasResume: boolean }) {
         </div>
       </nav>
 
+      {/* Reading progress, for screens without the trace rail. */}
+      <span
+        aria-hidden="true"
+        className="scroll-linked absolute inset-x-0 -bottom-px h-0.5 origin-left bg-foreground xl:hidden"
+        style={{ "--scroll-anim": "grow-x" } as CSSProperties}
+      />
+
       {open ? (
         <div id="mobile-menu" className="border-t border-border md:hidden">
-          <ul className="mx-auto flex max-w-6xl flex-col px-5 py-3">
+          <ul className="mx-auto flex flex-col px-5 py-3">
             {navigation.map((item) => (
               <li key={item.id}>
                 <a
                   href={`#${item.id}`}
                   onClick={() => setOpen(false)}
-                  className="block rounded-md px-2 py-3 text-base text-zinc-200 hover:bg-card"
+                  className="block rounded-md px-2 py-3 text-base text-foreground hover:bg-card"
                 >
                   {item.label}
                 </a>
@@ -104,7 +115,7 @@ export function SiteHeader({ hasResume }: { hasResume: boolean }) {
                 <a
                   href={profile.resumePath}
                   download
-                  className="flex items-center gap-2 rounded-md px-2 py-3 text-base text-zinc-200 hover:bg-card"
+                  className="flex items-center gap-2 rounded-md px-2 py-3 text-base text-foreground hover:bg-card"
                 >
                   <FileText className="size-4" />
                   Resume

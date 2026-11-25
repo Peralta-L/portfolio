@@ -8,7 +8,7 @@ function Label({ className, ...props }: ComponentProps<typeof LabelPrimitive.Roo
   return (
     <LabelPrimitive.Root
       data-slot="label"
-      className={cn("text-sm font-medium text-zinc-200 select-none", className)}
+      className={cn("text-sm font-medium text-foreground select-none", className)}
       {...props}
     />
   );

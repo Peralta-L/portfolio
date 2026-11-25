@@ -1,53 +1,51 @@
-import { ArrowRight, FileText } from "lucide-react";
+import { FileText } from "lucide-react";
 import { Avatar } from "@/components/avatar";
 import { GitHubIcon, LinkedInIcon } from "@/components/brand-icons";
 import { Button } from "@/components/ui/button";
 import { profile } from "@/content/profile";
 
+const nameLines = profile.name.split(" ");
+
 /** The hero is the LCP element, so it animates with CSS (no JS needed to become visible). */
 export function Hero({ hasResume }: { hasResume: boolean }) {
   return (
-    <section id="top" aria-labelledby="hero-heading" className="relative isolate overflow-hidden">
-      <div aria-hidden="true" className="bg-grid absolute inset-0 -z-10" />
-      <div
-        aria-hidden="true"
-        className="absolute inset-x-0 -top-40 -z-10 mx-auto h-[480px] max-w-4xl rounded-full bg-[radial-gradient(closest-side,rgb(37_99_235/0.22),transparent)] blur-2xl"
-      />
+    <section id="top" aria-labelledby="hero-heading" className="pt-8 pb-16 sm:pt-14 sm:pb-24">
 
-      <div className="mx-auto grid max-w-6xl items-center gap-14 px-5 pt-16 pb-24 sm:px-8 sm:pt-24 sm:pb-32 lg:grid-cols-[1.1fr_1fr] lg:gap-16">
-        <div className="animate-fade-up min-w-0">
-          <p className="mb-6 inline-flex items-center gap-2 rounded-full border border-border bg-card/60 px-3 py-1 text-xs text-zinc-300">
-            <span className="relative flex size-2">
-              <span className="absolute inline-flex size-full animate-ping rounded-full bg-success opacity-60" />
-              <span className="relative inline-flex size-2 rounded-full bg-success" />
-            </span>
-            {profile.availability}
-          </p>
-
-          <h1 id="hero-heading" className="text-4xl font-semibold tracking-tight text-balance sm:text-5xl lg:text-6xl">
-            <span className="text-gradient">{profile.name}</span>
+      <div className="grid items-end gap-12 lg:grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)] lg:gap-10">
+        <div className="min-w-0">
+          <h1
+            id="hero-heading"
+            className="font-display text-[clamp(3rem,9vw,6.75rem)] leading-[0.9] tracking-[-0.035em]"
+          >
+            {nameLines.map((word, i) => (
+              <span
+                key={word}
+                className="animate-fade-up block"
+                style={{ animationDelay: `${80 + i * 90}ms` }}
+              >
+                {word}
+              </span>
+            ))}
           </h1>
-          <p className="mt-4 font-mono text-sm text-accent sm:text-base">{profile.title}</p>
-          <p className="mt-6 max-w-xl text-lg leading-relaxed text-pretty text-muted-foreground sm:text-xl">
-            {profile.headline}
-          </p>
 
-          <div className="mt-10 flex flex-wrap items-center gap-3">
-            <Button asChild size="lg">
-              <a href="#projects" data-mood="happy">
-                View Projects
-                <ArrowRight />
-              </a>
-            </Button>
-            {hasResume ? (
-              <Button asChild size="lg" variant="secondary">
-                <a href={profile.resumePath} download data-mood="excited">
-                  <FileText />
-                  Download Resume
+          <div className="animate-fade-up mt-10 max-w-lg [animation-delay:420ms]">
+            <p className="text-lg font-semibold">{profile.title}</p>
+            <p className="mt-2 text-lg leading-relaxed text-pretty text-muted-foreground">{profile.headline}</p>
+
+            <div className="mt-8 flex flex-wrap items-center gap-3">
+              <Button asChild size="lg">
+                <a href="#projects" data-mood="happy">
+                  See my projects
                 </a>
               </Button>
-            ) : null}
-            <div className="flex items-center gap-2">
+              {hasResume ? (
+                <Button asChild size="lg" variant="secondary">
+                  <a href={profile.resumePath} download data-mood="excited">
+                    <FileText />
+                    Download resume
+                  </a>
+                </Button>
+              ) : null}
               {profile.github ? (
                 <Button asChild size="icon" variant="outline" className="size-11">
                   <a href={profile.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub profile" data-mood="wink">
@@ -66,13 +64,14 @@ export function Hero({ hasResume }: { hasResume: boolean }) {
           </div>
         </div>
 
-        <div className="animate-fade-up relative mx-auto w-full max-w-[400px] [animation-delay:120ms]">
-          <div
-            aria-hidden="true"
-            className="absolute inset-[8%] -z-10 rounded-full bg-[radial-gradient(closest-side,rgb(37_99_235/0.35),transparent)] blur-2xl"
-          />
-          <Avatar className="h-auto w-full drop-shadow-[0_24px_40px_rgb(0_0_0/0.45)]" />
-        </div>
+        <figure className="animate-fade-up mx-auto w-full max-w-[380px] [animation-delay:200ms] lg:mr-0">
+          <div className="bg-dots relative overflow-hidden rounded-t-[190px] border-x border-t border-border-strong bg-card px-6 pt-10">
+            <Avatar className="relative h-auto w-full" />
+          </div>
+          <figcaption className="border-t-2 border-foreground pt-2 font-mono text-[11px] text-muted-foreground">
+            Move your cursor, or hover a link, and I react.
+          </figcaption>
+        </figure>
       </div>
     </section>
   );

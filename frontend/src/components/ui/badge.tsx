@@ -3,13 +3,11 @@ import type { ComponentProps } from "react";
 import { cn } from "@/lib/utils";
 
 const badgeVariants = cva(
-  "inline-flex items-center gap-1.5 rounded-md border px-2 py-0.5 text-xs font-medium whitespace-nowrap",
+  "inline-flex items-center gap-1.5 rounded-[3px] border px-2 py-0.5 font-mono text-[11px] whitespace-nowrap",
   {
     variants: {
       variant: {
-        default: "border-border-strong bg-muted/60 text-zinc-300",
-        outline: "border-border text-muted-foreground",
-        primary: "border-primary/40 bg-primary/10 text-accent",
+        default: "border-border bg-card text-foreground",
       },
     },
     defaultVariants: { variant: "default" },

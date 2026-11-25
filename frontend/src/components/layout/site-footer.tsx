@@ -10,12 +10,12 @@ const links = [
 
 export function SiteFooter() {
   return (
-    <footer className="border-t border-border">
-      <div className="mx-auto flex max-w-6xl flex-col gap-6 px-5 py-10 sm:flex-row sm:items-center sm:justify-between sm:px-8">
+    <footer className="border-t-2 border-foreground">
+      <div className="mx-auto flex max-w-[84rem] flex-col gap-6 px-5 py-10 sm:flex-row sm:items-center sm:justify-between sm:px-8">
         <div>
           <p className="text-sm font-medium">{profile.name}</p>
           <p className="mt-1 text-sm text-muted-foreground">
-            © {new Date().getFullYear()} · Built with Next.js and Spring Boot.
+            © {new Date().getFullYear()}. Built with Next.js and Spring Boot.
           </p>
         </div>
         <ul className="flex items-center gap-2">
@@ -25,7 +25,7 @@ export function SiteFooter() {
                 href={href}
                 data-mood={label === "GitHub" ? "wink" : "curious"}
                 {...(href.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-                className="grid size-10 place-items-center rounded-lg border border-border text-muted-foreground transition-colors hover:border-border-strong hover:text-foreground"
+                className="grid size-10 place-items-center rounded-[3px] border border-border-strong text-muted-foreground transition-colors hover:border-foreground hover:text-foreground"
               >
                 <Icon className="size-4" />
                 <span className="sr-only">{label}</span>

@@ -1,6 +1,4 @@
-import { ChefHat, LayoutTemplate, ScanLine, TrendingUp } from "lucide-react";
 import type { Project } from "@/types/api";
-import type { ProjectVisual } from "@/types/content";
 
 /**
  * Fallback copy of GET /api/projects, used when the API is unreachable at build
@@ -52,16 +50,3 @@ export const fallbackProjects: Project[] = [
     technologies: ["Java 21", "Spring Boot", "PostgreSQL", "Next.js", "TypeScript", "Tailwind CSS"],
   },
 ];
-
-const defaultVisual: ProjectVisual = { icon: LayoutTemplate, gradient: ["#1e3a8a", "#0f172a"] };
-
-const visuals: Record<string, ProjectVisual> = {
-  "what-to-eat": { icon: ChefHat, gradient: ["#065f46", "#0c1a17"] },
-  "stock-portfolio-assistant": { icon: TrendingUp, gradient: ["#1e3a8a", "#0b1220"] },
-  "asset-scanner": { icon: ScanLine, gradient: ["#7c2d12", "#1c1210"] },
-  "portfolio-platform": { icon: LayoutTemplate, gradient: ["#4c1d95", "#120d1f"] },
-};
-
-export function projectVisual(slug: string): ProjectVisual {
-  return visuals[slug] ?? defaultVisual;
-}

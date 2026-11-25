@@ -1,54 +1,29 @@
-import { Cloud, Monitor, Server, type LucideIcon } from "lucide-react";
-import { Reveal } from "@/components/reveal";
 import { Section } from "@/components/section";
 import { skillCategoryBlurb } from "@/content/skills";
-import type { SkillCategory, SkillGroup } from "@/types/api";
-
-const categoryIcon: Record<SkillCategory, LucideIcon> = {
-  BACKEND: Server,
-  FRONTEND: Monitor,
-  CLOUD: Cloud,
-};
+import type { SkillGroup } from "@/types/api";
 
 export function Skills({ groups }: { groups: SkillGroup[] }) {
   return (
     <Section
       id="skills"
-      eyebrow="Skills"
+      meta={`${groups.reduce((n, g) => n + g.skills.length, 0)} tools`}
       title="The toolkit."
       description="Tools I use to ship and run production software, grouped by where they sit in the stack."
     >
-      <ul className="grid gap-4 md:grid-cols-3">
-        {groups.map((group, i) => {
-          const Icon = categoryIcon[group.category];
-          return (
-            <li key={group.category}>
-              <Reveal delay={i * 0.06} className="h-full">
-                <div className="h-full rounded-2xl border border-border bg-card/50 p-6 shadow-soft">
-                  <div className="flex items-center gap-3">
-                    <span className="grid size-9 place-items-center rounded-lg bg-primary/10 text-accent ring-1 ring-primary/30">
-                      <Icon aria-hidden="true" className="size-4" />
-                    </span>
-                    <h3 className="font-semibold">{group.label}</h3>
-                  </div>
-                  <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                    {skillCategoryBlurb[group.category]}
-                  </p>
-                  <ul className="mt-5 flex flex-wrap gap-2">
-                    {group.skills.map((skill) => (
-                      <li
-                        key={skill}
-                        className="rounded-lg border border-border-strong bg-background/60 px-3 py-1.5 text-sm text-zinc-200"
-                      >
-                        {skill}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </Reveal>
-            </li>
-          );
-        })}
+      <ul className="grid gap-10 md:grid-cols-3 md:gap-0 md:divide-x md:divide-border">
+        {groups.map((group) => (
+          <li key={group.category} className="md:px-8 md:first:pl-0 md:last:pr-0">
+            <h3 className="font-display text-xl">{group.label}</h3>
+            <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{skillCategoryBlurb[group.category]}</p>
+            <ul className="mt-5 divide-y divide-border border-y border-border">
+              {group.skills.map((skill) => (
+                <li key={skill} className="py-2 text-[15px]">
+                  {skill}
+                </li>
+              ))}
+            </ul>
+          </li>
+        ))}
       </ul>
     </Section>
   );

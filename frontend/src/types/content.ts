@@ -6,13 +6,6 @@ export type FocusArea = {
   icon: LucideIcon;
 };
 
-/** Frontend-only visual metadata for a project card, keyed by project slug. */
-export type ProjectVisual = {
-  icon: LucideIcon;
-  /** Two CSS colors for the cover gradient. */
-  gradient: [string, string];
-};
-
 export type ArchitectureNode = {
   title: string;
   detail: string;

@@ -24,12 +24,16 @@ import org.springframework.web.filter.OncePerRequestFilter;
 public class ContactRateLimitFilter extends OncePerRequestFilter {
 
     static final String CONTACT_PATH = "/api/contact";
+    private static final String GLOBAL_KEY = "*";
 
     private final SlidingWindowRateLimiter rateLimiter;
+    private final SlidingWindowRateLimiter globalLimiter;
     private final ObjectMapper objectMapper;
 
-    public ContactRateLimitFilter(SlidingWindowRateLimiter rateLimiter, ObjectMapper objectMapper) {
+    public ContactRateLimitFilter(
+            SlidingWindowRateLimiter rateLimiter, SlidingWindowRateLimiter globalLimiter, ObjectMapper objectMapper) {
         this.rateLimiter = rateLimiter;
+        this.globalLimiter = globalLimiter;
         this.objectMapper = objectMapper;
     }
 
@@ -42,16 +46,19 @@ public class ContactRateLimitFilter extends OncePerRequestFilter {
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain)
             throws ServletException, IOException {
         String client = request.getRemoteAddr();
-        if (rateLimiter.tryAcquire(client)) {
+        // Global cap first: it bounds stored messages and tracked clients even if a bot spoofs X-Forwarded-For.
+        boolean globalOk = globalLimiter.tryAcquire(GLOBAL_KEY);
+        if (globalOk && rateLimiter.tryAcquire(client)) {
             chain.doFilter(request, response);
             return;
         }
+        long retryAfter = globalOk ? rateLimiter.retryAfterSeconds(client) : globalLimiter.retryAfterSeconds(GLOBAL_KEY);
 
         ProblemDetail problem = ProblemDetail.forStatusAndDetail(
                 HttpStatus.TOO_MANY_REQUESTS, "Too many messages. Please try again later.");
         problem.setTitle("Too Many Requests");
         response.setStatus(HttpStatus.TOO_MANY_REQUESTS.value());
-        response.setHeader(HttpHeaders.RETRY_AFTER, String.valueOf(rateLimiter.retryAfterSeconds(client)));
+        response.setHeader(HttpHeaders.RETRY_AFTER, String.valueOf(retryAfter));
         response.setContentType(MediaType.APPLICATION_PROBLEM_JSON_VALUE);
         objectMapper.writeValue(response.getOutputStream(), problem);
     }

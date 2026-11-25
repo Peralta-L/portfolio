@@ -5,10 +5,10 @@ export const profile = {
   name: "Luis Peralta Aguirre",
   shortName: "Luis Peralta",
   initials: "LP",
-  title: "Backend Engineer | Computer Science Graduate",
+  title: "Backend engineer, Computer Science graduate",
   headline: "Building scalable APIs, AI-powered applications, and cloud-ready systems.",
-  availability: "Open to backend engineering roles",
-  email: "fake@outlook.com",
+  /** Public contact email. Empty hides every email link on the site. */
+  email: "",
   github: "https://github.com/Peralta-L",
   linkedin: "https://www.linkedin.com/in/luis-peralta-aguirre-987950375",
   /** Drop your CV at frontend/public/resume.pdf and every "Resume" button appears. */
@@ -32,9 +32,23 @@ export const focusAreas: FocusArea[] = [
   { title: "Problem Solving", icon: Puzzle, description: "Strong CS fundamentals: data structures, algorithms and trade-off analysis." },
 ];
 
-export const navigation = [
-  { id: "about", label: "About" },
-  { id: "projects", label: "Projects" },
-  { id: "experience", label: "Experience" },
-  { id: "contact", label: "Contact" },
+/**
+ * Every page section as a "span" in the trace rail. `service` groups spans by
+ * colour (see --color-svc-* in globals.css), like services in a real trace.
+ * `nav` marks the spans that also appear in the header menu.
+ */
+export const spans = [
+  { id: "about", label: "About", service: "profile", nav: true },
+  { id: "projects", label: "Projects", service: "work", nav: true },
+  { id: "architecture", label: "Architecture", service: "work" },
+  { id: "skills", label: "Skills", service: "stack" },
+  { id: "experience", label: "Experience", service: "career", nav: true },
+  { id: "education", label: "Education", service: "profile" },
+  { id: "contact", label: "Contact", service: "contact", nav: true },
 ] as const;
+
+export type SpanId = (typeof spans)[number]["id"];
+
+export const spanColor = (id: SpanId) => `var(--color-svc-${spans.find((s) => s.id === id)!.service})`;
+
+export const navigation = spans.filter((s) => "nav" in s);
