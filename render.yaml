@@ -1,0 +1,32 @@
+# Render Blueprint: Dashboard → New → Blueprint → select this repository.
+# Creates the PostgreSQL database and the Spring Boot API, wired together.
+databases:
+  - name: portfolio-db
+    plan: free
+    databaseName: portfolio
+    user: portfolio
+    postgresMajorVersion: "16"
+
+services:
+  - type: web
+    name: portfolio-api
+    runtime: docker
+    plan: free
+    rootDir: backend
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /actuator/health
+    autoDeploy: true
+    envVars:
+      - key: DB_HOST
+        fromDatabase: { name: portfolio-db, property: host }
+      - key: DB_PORT
+        fromDatabase: { name: portfolio-db, property: port }
+      - key: DB_NAME
+        fromDatabase: { name: portfolio-db, property: database }
+      - key: DB_USER
+        fromDatabase: { name: portfolio-db, property: user }
+      - key: DB_PASSWORD
+        fromDatabase: { name: portfolio-db, property: password }
+      # Set to your Vercel URL(s) after the frontend is deployed, comma-separated.
+      - key: ALLOWED_ORIGINS
+        sync: false

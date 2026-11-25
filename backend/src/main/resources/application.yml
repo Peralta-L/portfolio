@@ -1,0 +1,51 @@
+spring:
+  application:
+    name: portfolio-api
+  datasource:
+    url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_NAME:portfolio}
+    username: ${DB_USER:portfolio}
+    password: ${DB_PASSWORD:portfolio}
+    hikari:
+      maximum-pool-size: ${DB_POOL_SIZE:5}
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: validate # Flyway owns the schema; Hibernate only checks the mapping
+    properties:
+      hibernate:
+        jdbc:
+          time_zone: UTC
+  flyway:
+    enabled: true
+  jackson:
+    default-property-inclusion: non_null
+  mvc:
+    problemdetails:
+      enabled: true
+
+server:
+  port: ${PORT:8080}
+  forward-headers-strategy: framework # trust X-Forwarded-* from Render's proxy
+  shutdown: graceful
+  error:
+    include-stacktrace: never
+    include-message: never
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health
+  endpoint:
+    health:
+      probes:
+        enabled: true
+
+app:
+  cors:
+    # Comma-separated, e.g. https://luisperalta.dev,https://www.luisperalta.dev
+    allowed-origins: ${ALLOWED_ORIGINS:http://localhost:3000}
+  rate-limit:
+    max-requests: ${CONTACT_RATE_LIMIT:5}
+    global-max-requests: ${CONTACT_GLOBAL_RATE_LIMIT:30}
+    window: ${CONTACT_RATE_WINDOW:PT1H}

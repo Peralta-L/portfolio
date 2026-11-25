@@ -1,0 +1,138 @@
+@import "tailwindcss";
+
+/*
+ * Design tokens, including colors, fonts, and animations. These are used by Tailwind's theme system and also directly in CSS via var(--token-name).
+ */
+@theme {
+  --color-background: #e9ecef;
+  --color-foreground: #121820;
+  --color-card: #f7f8f9;
+  --color-card-foreground: #121820;
+  --color-muted: #dde1e6;
+  --color-muted-foreground: #4a5563;
+  --color-border: #c9cfd6;
+  --color-border-strong: #9aa4b0;
+  --color-input: #b7bfc8;
+  --color-ring: #2a3bc9;
+  --color-primary: #121820;
+  --color-primary-hover: #2a3340;
+  --color-primary-foreground: #f7f8f9;
+  --color-accent: #2a3bc9;
+  --color-success: #0a6f65;
+  --color-danger: #b3261e;
+
+  --font-sans: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-martian), ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --animate-fade-up: fade-up 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(14px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+/* Service hues, each at least 4.5:1 on the background. Plain vars: only referenced via inline styles, so not in @theme (Tailwind would tree-shake them). */
+:root {
+  --color-svc-profile: #2a3bc9;
+  --color-svc-work: #0a6f65;
+  --color-svc-stack: #8a5a00;
+  --color-svc-career: #8e2a66;
+  --color-svc-contact: #a33a12;
+}
+
+@layer base {
+  html {
+    color-scheme: light;
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background: #2a3bc9;
+    color: #fff;
+  }
+
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-ring;
+  }
+
+  * {
+    @apply border-border;
+  }
+}
+
+@layer components {
+  /* Archivo's width axis: wide, heavy display type. */
+  .font-display {
+    font-variation-settings: "wdth" 125;
+    font-weight: 750;
+    letter-spacing: -0.02em;
+  }
+
+  /* Scroll-linked progress (trace playhead, header bar). Pure CSS; browsers without scroll timelines just hide it. */
+  .scroll-linked {
+    display: none;
+  }
+
+  @supports (animation-timeline: scroll()) {
+    .scroll-linked {
+      display: block;
+      animation: var(--scroll-anim) linear both;
+      animation-timeline: scroll(root);
+    }
+  }
+
+  @keyframes playhead {
+    from {
+      left: 0%;
+    }
+    to {
+      left: 100%;
+    }
+  }
+
+  @keyframes grow-x {
+    from {
+      transform: scaleX(0);
+    }
+    to {
+      transform: scaleX(1);
+    }
+  }
+
+  .bg-dots {
+    background-image: radial-gradient(rgb(18 24 32 / 0.16) 1px, transparent 1px);
+    background-size: 18px 18px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  /* Scroll-linked indicators follow the reader, they don't animate on their own. */
+  .scroll-linked {
+    animation-duration: auto !important;
+  }
+}
