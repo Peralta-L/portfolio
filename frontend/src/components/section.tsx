@@ -28,7 +28,7 @@ export function Section({ id, title, description, meta, children, className }: S
           {service}/{id}
           {meta ? <span className="block text-muted-foreground">{meta}</span> : null}
         </p>
-        <div className="max-w-2xl">
+        <div className="max-w-4xl">
           <h2 id={headingId} className="font-display text-3xl leading-[1.05] text-balance sm:text-[2.6rem]">
             {title}
           </h2>

@@ -36,7 +36,7 @@ export function SiteHeader({ hasResume }: { hasResume: boolean }) {
         scrolled || open ? "border-border bg-background/85 backdrop-blur-md" : "border-transparent",
       )}
     >
-      <nav aria-label="Main" className="mx-auto flex h-16 max-w-[84rem] items-center justify-between gap-6 px-5 sm:px-8">
+      <nav aria-label="Main" className="mx-auto flex h-16 max-w-[96rem] items-center justify-between gap-6 px-5 sm:px-8">
         <a href="#top" className="group flex items-center gap-2.5 rounded-md" aria-label={`${profile.name}, back to top`}>
           <span className="grid size-8 place-items-center rounded-sm bg-primary font-mono text-[11px] font-semibold text-primary-foreground">
             {profile.initials}

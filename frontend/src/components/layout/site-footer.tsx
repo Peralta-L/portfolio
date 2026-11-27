@@ -11,7 +11,7 @@ const links = [
 export function SiteFooter() {
   return (
     <footer className="border-t-2 border-foreground">
-      <div className="mx-auto flex max-w-[84rem] flex-col gap-6 px-5 py-10 sm:flex-row sm:items-center sm:justify-between sm:px-8">
+      <div className="mx-auto flex max-w-[96rem] flex-col gap-6 px-5 py-10 sm:flex-row sm:items-center sm:justify-between sm:px-8">
         <div>
           <p className="text-sm font-medium">{profile.name}</p>
           <p className="mt-1 text-sm text-muted-foreground">

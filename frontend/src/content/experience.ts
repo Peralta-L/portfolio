@@ -1,37 +1,32 @@
 import type { Experience } from "@/types/api";
 
-/**
- * Fallback copy of GET /api/experience. Keep in sync with backend V2__seed_content.sql.
- * TODO(Luis): replace the dates with your real ones before deploying.
- */
+/** Fallback copy of GET /api/experience. Keep in sync with backend V2__seed_content.sql. */
 export const fallbackExperience: Experience[] = [
   {
-    role: "Backend Developer (Independent Projects)",
-    organization: "Self-directed",
-    location: "Remote",
-    startDate: "2023-01-01",
+    role: "IT Support",
+    organization: "Oppenhoff & Partner",
+    location: "Cologne, Germany",
+    startDate: "2026-01-01",
     endDate: null,
     current: true,
-    summary:
-      "Designing and building full-stack applications end to end, with a focus on backend APIs, relational data modeling and AI integration.",
+    summary: "IT support at an international law firm, building internal tools alongside day-to-day support.",
     highlights: [
-      "Built REST APIs in FastAPI, Express and Spring Boot backed by PostgreSQL and SQLite, with layered controller/service designs.",
-      "Integrated a Groq-hosted LLM to generate recipes from structured JSON output, personalised by allergies and cuisine preferences.",
-      "Delivered a team capstone with three teammates, owning the database schema, authentication and portfolio services.",
+      "Built an internal Asset Scanner (JavaScript, Node.js, SQLite) that registers hardware by scanning barcodes with a phone camera, with an OCR fallback.",
+      "Developed parts of the employee offboarding module, automating secure exit workflows.",
+      "Supported lawyers and staff with troubleshooting, onboarding and Active Directory administration.",
     ],
   },
   {
-    role: "Service Member",
-    organization: "U.S. Armed Forces",
-    startDate: "2018-01-01",
-    endDate: null,
-    current: true,
-    summary:
-      "Operating in high-responsibility environments where precision, accountability and clear communication are non-negotiable.",
+    role: "Soldier",
+    organization: "U.S. Army",
+    location: "Vilseck, Germany",
+    startDate: "2021-01-01",
+    endDate: "2025-12-31",
+    current: false,
+    summary: "Served in a high-responsibility environment where precision, accountability and clear communication are non-negotiable.",
     highlights: [
-      "Collaborated with international teams on time-critical operations.",
-      "Handled sensitive information with strict accuracy and confidentiality.",
-      "Developed discipline, adaptability and the ability to perform under pressure.",
+      "Worked daily with multinational NATO teams.",
+      "Responsible for high-value technical equipment.",
     ],
   },
 ];

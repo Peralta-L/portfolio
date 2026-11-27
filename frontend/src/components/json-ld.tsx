@@ -12,7 +12,7 @@ export function JsonLd({ skills }: { skills: SkillGroup[] }) {
         "@type": "Person",
         "@id": `${profile.siteUrl}/#person`,
         name: profile.name,
-        jobTitle: "Backend Engineer",
+        jobTitle: "Software Engineer",
         description: profile.headline,
         url: profile.siteUrl,
         ...(profile.email ? { email: `mailto:${profile.email}` } : {}),
