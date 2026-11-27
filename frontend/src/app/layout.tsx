@@ -12,7 +12,7 @@ const description = `${profile.title}. ${profile.headline} Java, Python, TypeScr
 export const metadata: Metadata = {
   metadataBase: new URL(profile.siteUrl),
   title: {
-    default: `${profile.name} · Backend Engineer`,
+    default: `${profile.name} · Software Engineer`,
     template: `%s · ${profile.name}`,
   },
   description,
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   creator: profile.name,
   keywords: [
     profile.name,
-    "Backend Engineer",
+    "Software Engineer",
     "Java",
     "Spring Boot",
     "Python",
@@ -38,13 +38,13 @@ export const metadata: Metadata = {
     type: "website",
     url: "/",
     siteName: profile.name,
-    title: `${profile.name} · Backend Engineer`,
+    title: `${profile.name} · Software Engineer`,
     description,
     locale: "en_US",
   },
   twitter: {
     card: "summary_large_image",
-    title: `${profile.name} · Backend Engineer`,
+    title: `${profile.name} · Software Engineer`,
     description,
   },
   robots: { index: true, follow: true },

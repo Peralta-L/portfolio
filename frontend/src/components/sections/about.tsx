@@ -5,10 +5,10 @@ export function About() {
   return (
     <Section
       id="about"
-      title="Backend engineer who cares about the whole system."
+      title="Full-stack engineer who cares about the whole system."
       description="I like problems where correctness, performance and clarity all matter at once."
     >
-      <div className="grid gap-14 md:ml-48 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:gap-12">
+      <div className="grid gap-14 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:gap-12">
         <div className="max-w-prose space-y-5 text-[17px] leading-[1.7] text-pretty">
           {bio.map((paragraph) => (
             <p key={paragraph.slice(0, 24)}>{paragraph}</p>

@@ -5,7 +5,7 @@ import { certifications, education, languages } from "@/content/education";
 export function Education() {
   return (
     <Section id="education" title="Foundations.">
-      <div className="grid gap-12 md:ml-48 lg:grid-cols-[minmax(0,1.5fr)_minmax(0,1fr)] lg:gap-12">
+      <div className="grid gap-12 lg:grid-cols-[minmax(0,1.5fr)_minmax(0,1fr)] lg:gap-12">
         {education.map((entry) => (
           <article key={entry.degree}>
             <h3 className="font-display text-xl sm:text-2xl">{entry.degree}</h3>

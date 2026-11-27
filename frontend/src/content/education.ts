@@ -4,7 +4,7 @@ export const education: Education[] = [
   {
     degree: "B.S. Computer Science",
     institution: "University of Maryland Global Campus",
-    // TODO(Luis): add your graduation year, e.g. period: "2021 — 2025".
+    period: "2026",
     description:
       "Software engineering, data structures and algorithms, databases, operating systems and computer networks, completed alongside military service.",
     coursework: [
@@ -19,7 +19,7 @@ export const education: Education[] = [
 ];
 
 export const certifications: Certification[] = [
-  { name: "CS50: Introduction to Computer Science", issuer: "Harvard University (edX)" },
+  { name: "CS50x: Introduction to Computer Science", issuer: "HarvardX, verified certificate · 2026" },
 ];
 
 export const languages: Language[] = [

@@ -24,7 +24,7 @@ export default async function HomePage() {
     <>
       <JsonLd skills={skills} />
       <SiteHeader hasResume={resume} />
-      <div className="mx-auto grid max-w-[84rem] gap-12 px-5 sm:px-8 xl:grid-cols-[17rem_minmax(0,1fr)] xl:gap-16">
+      <div className="mx-auto grid max-w-[96rem] gap-12 px-5 sm:px-8 xl:grid-cols-[16rem_minmax(0,1fr)] xl:gap-12">
         <aside className="hidden xl:block">
           <TraceRail />
         </aside>

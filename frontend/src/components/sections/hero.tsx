@@ -9,13 +9,13 @@ const nameLines = profile.name.split(" ");
 /** The hero is the LCP element, so it animates with CSS (no JS needed to become visible). */
 export function Hero({ hasResume }: { hasResume: boolean }) {
   return (
-    <section id="top" aria-labelledby="hero-heading" className="pt-8 pb-16 sm:pt-14 sm:pb-24">
+    <section id="top" aria-labelledby="hero-heading" className="flex min-h-[calc(100svh-4rem)] flex-col justify-center py-10">
 
-      <div className="grid items-end gap-12 lg:grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)] lg:gap-10">
+      <div className="grid items-center gap-12 lg:grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)] lg:gap-10">
         <div className="min-w-0">
           <h1
             id="hero-heading"
-            className="font-display text-[clamp(3rem,9vw,6.75rem)] leading-[0.9] tracking-[-0.035em]"
+            className="font-display text-[clamp(2.75rem,7vw,5.5rem)] leading-[0.9] tracking-[-0.035em]"
           >
             {nameLines.map((word, i) => (
               <span
@@ -28,7 +28,7 @@ export function Hero({ hasResume }: { hasResume: boolean }) {
             ))}
           </h1>
 
-          <div className="animate-fade-up mt-10 max-w-lg [animation-delay:420ms]">
+          <div className="animate-fade-up mt-8 max-w-lg [animation-delay:420ms]">
             <p className="text-lg font-semibold">{profile.title}</p>
             <p className="mt-2 text-lg leading-relaxed text-pretty text-muted-foreground">{profile.headline}</p>
 
@@ -64,11 +64,11 @@ export function Hero({ hasResume }: { hasResume: boolean }) {
           </div>
         </div>
 
-        <figure className="animate-fade-up mx-auto w-full max-w-[380px] [animation-delay:200ms] lg:mr-0">
-          <div className="bg-dots relative overflow-hidden rounded-t-[190px] border-x border-t border-border-strong bg-card px-6 pt-10">
+        <figure className="animate-fade-up mx-auto w-full max-w-[min(440px,60svh)] [animation-delay:200ms] lg:mr-0">
+          <div className="bg-dots relative overflow-hidden rounded-t-full border-x border-t border-border-strong bg-card px-6 pt-10">
             <Avatar className="relative h-auto w-full" />
           </div>
-          <figcaption className="border-t-2 border-foreground pt-2 font-mono text-[11px] text-muted-foreground">
+          <figcaption className="border-t-2 border-foreground pt-2 font-mono text-[11px] whitespace-nowrap text-muted-foreground">
             Move your cursor, or hover a link, and I react.
           </figcaption>
         </figure>

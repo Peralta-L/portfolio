@@ -17,7 +17,7 @@ export function Contact() {
       title="Let's build something reliable."
       description="Hiring for a backend role, or want to talk about an API or system design? Send a message. I read every one and reply within a couple of days."
     >
-      <div className="grid gap-10 md:ml-48 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.6fr)] lg:gap-12">
+      <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.6fr)] lg:gap-12">
         <ul className="content-start divide-y divide-border border-y border-border">
           {channels.map(({ label, value, href, icon: Icon }) => (
             <li key={label}>
