@@ -13,6 +13,8 @@ export const profile = {
   linkedin: "https://www.linkedin.com/in/luis-peralta-aguirre-987950375",
   /** Drop your CV at frontend/public/resume.pdf and every "Resume" button appears. */
   resumePath: "/resume.pdf",
+  /** Status shown next to the green dot in the header. */
+  availability: "Open to backend roles",
   siteUrl: (process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000").replace(/\/$/, ""),
 } as const;
 
