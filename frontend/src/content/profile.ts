@@ -1,6 +1,22 @@
 import { BrainCircuit, Cloud, Code, Database, Layers, Network, Puzzle } from "lucide-react";
 import type { FocusArea } from "@/types/content";
 
+/**
+ * Turns NEXT_PUBLIC_SITE_URL into a valid origin. Tolerates a missing https://,
+ * stray quotes or spaces and a trailing slash; falls back to localhost.
+ */
+function normalizeSiteUrl(raw: string | undefined): string {
+  const value = (raw ?? "").trim().replace(/^["']|["']$/g, "");
+  if (!value) return "http://localhost:3000";
+  const withScheme = /^https?:\/\//i.test(value) ? value : `https://${value}`;
+  try {
+    return new URL(withScheme).origin;
+  } catch {
+    console.warn("[profile] NEXT_PUBLIC_SITE_URL is not a valid URL, using localhost");
+    return "http://localhost:3000";
+  }
+}
+
 export const profile = {
   name: "Luis Peralta Aguirre",
   shortName: "Luis Peralta",
@@ -11,10 +27,11 @@ export const profile = {
   email: "",
   github: "https://github.com/Peralta-L",
   linkedin: "https://www.linkedin.com/in/luis-peralta-aguirre-987950375",
-  /** Drop your CV at frontend/public/resume.pdf and every "Resume" button appears. */
+  /** Path of your CV inside frontend/public. If the file exists, every "Resume" button appears. */
   resumePath: "/portfolioCV.pdf",
   /** Status shown next to the green dot in the header. */
   availability: "Open to backend roles",
+  siteUrl: normalizeSiteUrl(process.env.NEXT_PUBLIC_SITE_URL),
 } as const;
 
 export const bio: string[] = [
