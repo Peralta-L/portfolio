@@ -1,5 +1,5 @@
 # ---- Build ----------------------------------------------------------------
-FROM maven:3.9.9-eclipse-temurin-21 AS build
+FROM maven:3.9-eclipse-temurin-25 AS build
 WORKDIR /app
 
 # Resolve dependencies first so this layer is cached between code changes.
@@ -12,7 +12,7 @@ RUN mvn -B -ntp package -DskipTests \
     && java -Djarmode=tools -jar target/portfolio-api.jar extract --layers --launcher --destination target/extracted
 
 # ---- Runtime --------------------------------------------------------------
-FROM eclipse-temurin:21-jre-alpine
+FROM eclipse-temurin:25-jre-alpine
 WORKDIR /app
 
 RUN addgroup -S spring && adduser -S spring -G spring
