@@ -1,6 +1,6 @@
 # Luis Peralta Aguirre · Portfolio
 
-Personal portfolio for a backend engineer: a **Next.js 15** frontend on Vercel backed by a **Spring Boot 3 / Java 21** API and **PostgreSQL** on Render.
+Personal portfolio for a backend engineer: a **Next.js 15** frontend on Vercel backed by a **Spring Boot 3 / Java 25** API and **PostgreSQL** on Render.
 
 The site is statically generated and reads projects, skills and experience from the API, revalidating them every hour. The contact form posts to a validated, rate-limited endpoint that saves messages to PostgreSQL. If the API is asleep or down, the site falls back to bundled content, so it never renders empty.
 
@@ -27,7 +27,7 @@ The site is statically generated and reads projects, skills and experience from 
 | Layer    | Technology |
 | -------- | ---------- |
 | Frontend | Next.js 15 (App Router), React 19, TypeScript, Tailwind CSS 4, shadcn/ui (Radix), Framer Motion, Lucide, Zod |
-| Backend  | Java 21, Spring Boot 3.5 (Web, Data JPA, Security, Validation, Actuator), Lombok, Flyway, Maven |
+| Backend  | Java 25, Spring Boot 3.5 (Web, Data JPA, Security, Validation, Actuator), Lombok, Flyway, Maven |
 | Database | PostgreSQL 16 |
 | Hosting  | Vercel (frontend), Render (API + database), GitHub Actions (CI) |
 
@@ -66,7 +66,7 @@ portfolio/
 
 ## Run locally
 
-**Requirements:** Node.js 20+, JDK 21. Maven is not needed (the wrapper downloads it). Docker is optional.
+**Requirements:** Node.js 20+, JDK 25. Maven is not needed (the wrapper downloads it). Docker is optional.
 
 ### 1. API
 
