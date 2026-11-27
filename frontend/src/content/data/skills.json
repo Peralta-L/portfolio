@@ -1,0 +1,46 @@
+[
+  {
+    "category": "BACKEND",
+    "label": "Backend",
+    "skills": [
+      "Java",
+      "Spring Boot",
+      "Python",
+      "SQL",
+      "FastAPI",
+      "Node.js",
+      "Express",
+      "PostgreSQL",
+      "Prisma",
+      "REST APIs",
+      "JWT",
+      "LLM APIs",
+      "Docker"
+    ]
+  },
+  {
+    "category": "FRONTEND",
+    "label": "Frontend",
+    "skills": [
+      "TypeScript",
+      "JavaScript",
+      "HTML/CSS",
+      "React",
+      "Next.js",
+      "React Native",
+      "Tailwind CSS"
+    ]
+  },
+  {
+    "category": "CLOUD",
+    "label": "Cloud & DevOps",
+    "skills": [
+      "Git",
+      "GitHub",
+      "Vercel",
+      "Render",
+      "Neon",
+      "GitHub Actions"
+    ]
+  }
+]

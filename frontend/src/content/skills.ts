@@ -1,16 +1,17 @@
-import type { SkillGroup } from "@/types/api";
+import { z } from "zod";
+import { skillGroupSchema, type SkillGroup } from "@/types/api";
+import data from "./data/skills.json";
 
-/** Fallback copy of GET /api/skills. Keep in sync with backend V2__seed_content.sql. */
-export const fallbackSkills: SkillGroup[] = [
-  {
-    category: "BACKEND",
-    label: "Backend",
-    skills: ["Java", "Spring Boot", "Python", "SQL", "FastAPI", "Node.js", "Express", "PostgreSQL", "Prisma", "REST APIs", "JWT", "LLM APIs", "Docker"],
-  },
-  { category: "FRONTEND", label: "Frontend", skills: ["TypeScript", "JavaScript", "HTML/CSS", "React", "Next.js", "React Native", "Tailwind CSS"] },
-  { category: "CLOUD", label: "Cloud & DevOps", skills: ["Git", "GitHub", "Vercel", "Render", "Neon", "GitHub Actions"] },
-];
+/**
+ * Fallback copy of GET /api/skills, shown only when the API can't be reached.
+ *
+ * Don't edit data/skills.json by hand: it's a snapshot of the database that
+ * scripts/sync-content.mjs rewrites before every build. To change skills,
+ * add a Flyway migration in the backend (see docs/content-and-migrations.md).
+ */
+export const fallbackSkills: SkillGroup[] = z.array(skillGroupSchema).parse(data);
 
+/** Copy text under each skill group. Not in the database, so edit it here directly. */
 export const skillCategoryBlurb: Record<SkillGroup["category"], string> = {
   BACKEND: "Where I spend most of my time: services, data and security.",
   FRONTEND: "Enough to ship complete products and work well with frontend teams.",

@@ -95,8 +95,11 @@ class PortfolioApiIntegrationTest {
         mvc.perform(get("/api/experience"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$", hasSize(2)))
+                .andExpect(jsonPath("$[0].organization", is("Oppenhoff & Partner")))
                 .andExpect(jsonPath("$[0].current", is(true)))
-                .andExpect(jsonPath("$[0].highlights", hasSize(3)));
+                .andExpect(jsonPath("$[0].highlights", hasSize(3)))
+                .andExpect(jsonPath("$[1].organization", is("U.S. Army")))
+                .andExpect(jsonPath("$[1].current", is(false)));
     }
 
     @Test

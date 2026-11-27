@@ -245,10 +245,12 @@ If you add a custom domain later, update `NEXT_PUBLIC_SITE_URL` on Vercel and `A
 | Name, headline, links (email, LinkedIn), bio, focus areas | `frontend/src/content/profile.ts` |
 | Education, certifications, languages | `frontend/src/content/education.ts` |
 | Architecture diagrams | `frontend/src/content/architecture.ts` |
-| Projects, skills, experience (live data) | a **new** Flyway migration, e.g. `backend/.../db/migration/V3__update_projects.sql` |
-| Fallback copies of the live data | `frontend/src/content/{projects,skills,experience}.ts` |
+| Projects, skills, experience (live data) | a **new** Flyway migration, e.g. `backend/.../db/migration/V4__update_projects.sql` |
+| Fallback copies of the live data | generated: `frontend/src/content/data/*.json` is refreshed from the API before every build, so don't edit it by hand |
 | Resume | `frontend/public/resume.pdf` (the Resume buttons appear automatically) |
 | Project screenshots | `frontend/public/projects/<name>.png`, then set `image_url = '/projects/<name>.png'` |
+
+How content, the fallback sync and Flyway migrations work, step by step: [docs/content-and-migrations.md](docs/content-and-migrations.md).
 
 Empty links (for example LinkedIn) are hidden automatically. Never edit an applied migration, because Flyway verifies checksums; add a new one instead.
 
